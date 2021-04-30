@@ -1,0 +1,6 @@
+repositories:
+  universal_robot:
+    type: git
+    url: https://github.com/ros-industrial/universal_robot.git
+    version: melodic-devel-staging
+
