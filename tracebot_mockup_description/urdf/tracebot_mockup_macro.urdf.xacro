@@ -6,9 +6,15 @@
   <xacro:macro name="tracebot_mockup" params="table_height
                                               table_length
                                               table_width
+                                              robot_mount_offset_x
+                                              robot_mount_offset_y
+                                              robot_mount_offset_theta
                                               robot_mount_height
                                               robot_mount_length
                                               robot_mount_width
+                                              pump_offset_x
+                                              pump_offset_y
+                                              pump_offset_theta
                                               pump_height
                                               pump_length
                                               pump_width">
@@ -46,7 +52,7 @@
     </link>
 
     <joint name="robot_mount_base_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="${robot_mount_offset_x} ${robot_mount_offset_y} 0" rpy="0 0 ${robot_mount_offset_theta}"/>
       <parent link="table"/>
       <child link="robot_mount_base"/>
     </joint>
@@ -110,7 +116,7 @@
     </link>
 
     <joint name="pump_joint" type="fixed">
-      <origin xyz="0 0.5 0" rpy="0 0 0"/>
+      <origin xyz="${pump_offset_x} ${pump_offset_y} 0" rpy="0 0 ${pump_offset_theta}"/>
       <parent link="table"/>
       <child link="pump"/>
     </joint>
