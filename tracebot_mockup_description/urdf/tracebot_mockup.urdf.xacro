@@ -12,6 +12,7 @@
     robot_mount_length="$(arg robot_mount_length)"
     robot_mount_width="$(arg robot_mount_width)"
     robot_mount_height="$(arg robot_mount_height)"
+    robot_base_tilt="$(arg robot_base_tilt)"
     pump_offset_x="$(arg pump_offset_x)"
     pump_offset_y="$(arg pump_offset_y)"
     pump_offset_theta="$(arg pump_offset_theta)"

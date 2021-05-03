@@ -9,6 +9,7 @@
   <arg name="robot_mount_length" default="0.2"/>
   <arg name="robot_mount_width" default="0.2"/>
   <arg name="robot_mount_height" default="0.6"/>
+  <arg name="robot_base_tilt" default="0.0"/>
   <arg name="pump_offset_x" default="0.0"/>
   <arg name="pump_offset_y" default="0.2"/>
   <arg name="pump_offset_theta" default="0.0"/>
@@ -26,6 +27,7 @@
     robot_mount_length:=$(arg robot_mount_length)
     robot_mount_width:=$(arg robot_mount_width)
     robot_mount_height:=$(arg robot_mount_height)
+    robot_base_tilt:=$(arg robot_base_tilt)
     pump_offset_x:=$(arg pump_offset_x)
     pump_offset_y:=$(arg pump_offset_y)
     pump_offset_theta:=$(arg pump_offset_theta)
