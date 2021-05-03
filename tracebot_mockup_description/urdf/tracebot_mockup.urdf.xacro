@@ -1,22 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur">
    
-  <xacro:arg name="table_length" default="2.0"/>
-  <xacro:arg name="table_width" default="2.0"/>
-  <xacro:arg name="table_height" default="1.0"/>
-  <xacro:arg name="robot_mount_offset_x" default="0.0"/>
-  <xacro:arg name="robot_mount_offset_y" default="-0.2"/>
-  <xacro:arg name="robot_mount_offset_theta" default="0.0"/>
-  <xacro:arg name="robot_mount_length" default="0.2"/>
-  <xacro:arg name="robot_mount_width" default="0.2"/>
-  <xacro:arg name="robot_mount_height" default="0.6"/>
-  <xacro:arg name="pump_offset_x" default="0.0"/>
-  <xacro:arg name="pump_offset_y" default="0.2"/>
-  <xacro:arg name="pump_offset_theta" default="0.0"/>
-  <xacro:arg name="pump_length" default="0.2"/>
-  <xacro:arg name="pump_width" default="0.3"/>
-  <xacro:arg name="pump_height" default="0.4"/>
-
   <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
 
   <xacro:tracebot_mockup table_length="$(arg table_length)"
