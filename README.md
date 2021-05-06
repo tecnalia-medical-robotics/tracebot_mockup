@@ -63,7 +63,7 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
 
 - Create a workspace:
   ```bash
-  mkdir ~/path/to/tracebot_mockup_ws/src
+  mkdir -p ~/path/to/tracebot_mockup_ws/src
   cd ~/path/to/tracebot_mockup_ws
   catkin config --extend /opt/ros/"$ROS_DISTRO"
   ```
@@ -76,6 +76,11 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
   ```bash
   cd ~/path/to/tracebot_mockup_ws/src
   vcs import < tracebot_mockup/upstream.repos # Install python(3)-vcstool if not available
+  ```
+- Install the rest of dependencies from binary repositories
+  ```bash
+  cd ~/path/to/tracebot_mockup_ws
+  rosdep install -iy --from-paths src --rosdistro "$ROS_DISTRO"
   ```
 - Build:
   ```bash
