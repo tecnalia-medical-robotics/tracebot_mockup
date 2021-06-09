@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>tracebot_mockup_simulator</name>
+  <version>0.0.0</version>
+  <description>The tracebot_mockup_simulator package</description>
+
+  <maintainer email="miguel.prada@tecnalia.com">Miguel Prada</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_trajectory_controller</exec_depend>
+  <exec_depend>ros_control_boilerplate</exec_depend>
+  <exec_depend>tracebot_mockup_description</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <test_depend>roslaunch</test_depend>
+
+  <export>
+  </export>
+</package>
