@@ -1,5 +1,7 @@
 <launch>
 
+  <arg name="interactive" default="false"/>
+
   <arg name="table_length" default="2.0"/>
   <arg name="table_width" default="2.0"/>
   <arg name="table_height" default="1.0"/>
@@ -17,26 +19,10 @@
   <arg name="pump_width" default="0.3"/>
   <arg name="pump_height" default="0.4"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro $(find tracebot_mockup_description)/urdf/tracebot_mockup.urdf.xacro
-    table_length:=$(arg table_length)
-    table_width:=$(arg table_width)
-    table_height:=$(arg table_height)
-    robot_mount_offset_x:=$(arg robot_mount_offset_x)
-    robot_mount_offset_y:=$(arg robot_mount_offset_y)
-    robot_mount_offset_theta:=$(arg robot_mount_offset_theta)
-    robot_mount_length:=$(arg robot_mount_length)
-    robot_mount_width:=$(arg robot_mount_width)
-    robot_mount_height:=$(arg robot_mount_height)
-    robot_base_tilt:=$(arg robot_base_tilt)
-    pump_offset_x:=$(arg pump_offset_x)
-    pump_offset_y:=$(arg pump_offset_y)
-    pump_offset_theta:=$(arg pump_offset_theta)
-    pump_length:=$(arg pump_length)
-    pump_width:=$(arg pump_width)
-    pump_height:=$(arg pump_height)
-    "/>
+  <include file="$(find tracebot_mockup_description)/launch/load_model.launch" pass_all_args="True"/>
 
-  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node if="$(arg interactive)" name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_description)/config/tracebot_mockup.rviz"/>
 
