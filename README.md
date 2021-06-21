@@ -53,10 +53,10 @@ roslaunch tracebot_mockup_description view_tracebot_mockup.launch robot_base_til
 A camera view can be added to rviz:
 
 ```bash
-roslaunch roslaunch tracebot_mockup_description camera_display.launch
+roslaunch tracebot_mockup_description camera_display.launch
 ```
 
-The intrinsics camera parameters of the camera are defined using the standard ROS format, and stored in [head_camera.yaml](tracebot_mockup_description/config/head_camera.yaml).
+The intrinsic camera parameters are defined using the standard ROS format, and stored in [head_camera.yaml](tracebot_mockup_description/config/head_camera.yaml).
 The pose of the camera in the world is defined within the launchfile [camera_display.launch](tracebot_mockup_description/launch/camera_display.launch)
 
 ## Setup
