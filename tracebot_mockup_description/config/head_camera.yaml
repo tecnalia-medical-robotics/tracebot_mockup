@@ -1,5 +1,8 @@
+# If image width/height are modified, make sure to modify the included blank image (head_camera.png) used by the image_publisher node
 image_width: 640
 image_height: 480
+# If image width/height are modified, make sure to modify the included blank image (head_camera.png) used by the image_publisher node
+
 camera_name: camera
 camera_matrix:
   rows: 3
