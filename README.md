@@ -106,4 +106,10 @@ The mockup with default parameters can be run using rocker with:
 rocker --x11 -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
 ```
 
+Note that if your system runs NVidia graphics, you may need to use:
+
+```bash
+rocker --x11 --nvidia -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+```
+
 Alternatively, instructions to enable X11 forwarding in docker in different ways can be found in [this page](http://wiki.ros.org/docker/Tutorials/GUI).
