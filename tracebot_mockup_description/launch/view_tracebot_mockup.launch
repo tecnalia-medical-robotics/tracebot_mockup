@@ -19,9 +19,37 @@
   <arg name="pump_width" default="0.3"/>
   <arg name="pump_height" default="0.4"/>
 
+  <arg name="left_shoulder_pan_position" default="$(eval pi/2)"/>
+  <arg name="left_shoulder_lift_position" default="$(eval -pi/4)"/>
+  <arg name="left_elbow_position" default="$(eval pi/2)"/>
+  <arg name="left_wrist_1_position" default="$(eval -3*pi/4)"/>
+  <arg name="left_wrist_2_position" default="$(eval -pi/2)"/>
+  <arg name="left_wrist_3_position" default="0.0"/>
+  <arg name="right_shoulder_pan_position" default="$(eval -pi/2)"/>
+  <arg name="right_shoulder_lift_position" default="$(eval -3*pi/4)"/>
+  <arg name="right_elbow_position" default="$(eval -pi/2)"/>
+  <arg name="right_wrist_1_position" default="$(eval -pi/4)"/>
+  <arg name="right_wrist_2_position" default="$(eval pi/2)"/>
+  <arg name="right_wrist_3_position" default="0.0"/>
+
   <include file="$(find tracebot_mockup_description)/launch/load_model.launch" pass_all_args="True"/>
 
-  <node if="$(arg interactive)" name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node if="$(arg interactive)" name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+    <rosparam param="zeros" subst_value="True">
+      left_shoulder_pan_joint: $(arg left_shoulder_pan_position)
+      left_shoulder_lift_joint: $(arg left_shoulder_lift_position)
+      left_elbow_joint: $(arg left_elbow_position)
+      left_wrist_1_joint: $(arg left_wrist_1_position)
+      left_wrist_2_joint: $(arg left_wrist_2_position)
+      left_wrist_3_joint: $(arg left_wrist_3_position)
+      right_shoulder_pan_joint: $(arg right_shoulder_pan_position)
+      right_shoulder_lift_joint: $(arg right_shoulder_lift_position)
+      right_elbow_joint: $(arg right_elbow_position)
+      right_wrist_1_joint: $(arg right_wrist_1_position)
+      right_wrist_2_joint: $(arg right_wrist_2_position)
+      right_wrist_3_joint: $(arg right_wrist_3_position)
+    </rosparam>
+  </node>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_description)/config/tracebot_mockup.rviz"/>
