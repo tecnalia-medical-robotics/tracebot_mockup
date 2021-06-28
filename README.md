@@ -126,13 +126,20 @@ This is a small wrapper tool around the docker CLI which facilitates tasks such 
 The mockup with default parameters can be run using rocker with:
 
 ```bash
-rocker --x11 -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+rocker --x11 --name tracebot -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_simulator tracebot_mockup_simulator.launch
 ```
 
 Note that if your system runs NVidia graphics, you may need to use:
 
 ```bash
-rocker --x11 --nvidia -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+rocker --x11 --nvidia --name tracebot -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
 ```
 
 Alternatively, instructions to enable X11 forwarding in docker in different ways can be found in [this page](http://wiki.ros.org/docker/Tutorials/GUI).
+
+Additional commands may be run in the same container running the simulator using `docker exec`.
+E.g. add the camera visualization with:
+
+```bash
+docker exec -it tracebot bash -c 'source /opt/ros/tracebot_mockup/setup.bash; roslaunch tracebot_mockup_description camera_display.launch
+```
