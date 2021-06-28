@@ -41,16 +41,30 @@ All parameters use SI units.
 
 ## Usage
 
-Currently this repository offers the `view_tracebot_mockup.launch` file, inside `tracebot_mockup_description` to visualize the mockup model using rviz.
+Currently this repository offers the `tracebot_mockup_simulator.launch` file, inside `tracebot_mockup_simulator` to start the simulated mockup model and visualize it using rviz.
 
 This launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
 For instance, to visualize the model with a 30 degree tilt of the robot bases, run:
 
 ```bash
-roslaunch tracebot_mockup_description view_tracebot_mockup.launch robot_base_tilt:=0.5236
+roslaunch tracebot_mockup_simulator tracebot_mockup_simulator.launch robot_base_tilt:=0.5236
 ```
 
-A camera view can be added to rviz:
+The suggested way to interact with this simulator at this point is to use `rqt_controller_manager` and `rqt_joint_trajectory_controller` to interact with the default controllers in the simulation.
+
+Alternatively, a simpler visualization can be started by launching a `joint_state_publisher_gui`-based setup with:
+
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch interactive:=true
+```
+
+The simple visualization allows the initial position of each of the joints to be configured using roslaunch arguments, such as:
+
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch interactive:=true left_shoulder_pan_position:=0.0
+```
+
+A camera view can be added to rviz when viewing either the simulator or the simple visualization with:
 
 ```bash
 roslaunch tracebot_mockup_description camera_display.launch
