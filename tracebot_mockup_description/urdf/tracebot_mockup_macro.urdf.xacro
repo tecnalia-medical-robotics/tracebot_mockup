@@ -61,7 +61,7 @@
     <link name="left_robot_mount"/>
 
     <joint name="left_robot_mount_joint" type="fixed">
-      <origin xyz="${robot_mount_length/2} 0 ${robot_mount_height/2}" rpy="0 ${pi/2 - robot_base_tilt} 0"/>
+      <origin xyz="${-robot_mount_length/2} 0 ${robot_mount_height/2}" rpy="0 ${-pi/2 + robot_base_tilt} 0"/>
       <parent link="robot_mount_base"/>
       <child link="left_robot_mount"/>
     </joint>
@@ -69,7 +69,7 @@
     <link name="right_robot_mount"/>
 
     <joint name="right_robot_mount_joint" type="fixed">
-      <origin xyz="${-robot_mount_length/2} 0 ${robot_mount_height/2}" rpy="0 ${-pi/2 + robot_base_tilt} 0"/>
+      <origin xyz="${robot_mount_length/2} 0 ${robot_mount_height/2}" rpy="0 ${pi/2 - robot_base_tilt} 0"/>
       <parent link="robot_mount_base"/>
       <child link="right_robot_mount"/>
     </joint>
