@@ -18,7 +18,9 @@
                                               pump_offset_theta
                                               pump_height
                                               pump_length
-                                              pump_width">
+                                              pump_width
+                                              left_arm
+                                              right_arm">
 
     <link name="base_link"/>
 
@@ -75,10 +77,10 @@
     </joint>
 
     <xacro:ur_robot prefix="left_"
-      joint_limits_parameters_file="$(find ur_description)/config/ur5e/joint_limits.yaml"
-                    kinematics_parameters_file="$(find ur_description)/config/ur5e/default_kinematics.yaml"
-                    physical_parameters_file="$(find ur_description)/config/ur5e/physical_parameters.yaml"
-                    visual_parameters_file="$(find ur_description)/config/ur5e/visual_parameters.yaml"
+      joint_limits_parameters_file="$(find ur_description)/config/${left_arm}/joint_limits.yaml"
+                    kinematics_parameters_file="$(find ur_description)/config/${left_arm}/default_kinematics.yaml"
+                    physical_parameters_file="$(find ur_description)/config/${left_arm}/physical_parameters.yaml"
+                    visual_parameters_file="$(find ur_description)/config/${left_arm}/visual_parameters.yaml"
                     transmission_hw_interface="hardware_interface/VelocityJointInterface"
                     safety_limits="false"
                     safety_pos_margin="0.15"
@@ -90,10 +92,10 @@
     </joint>
 
     <xacro:ur_robot prefix="right_"
-      joint_limits_parameters_file="$(find ur_description)/config/ur5e/joint_limits.yaml"
-                    kinematics_parameters_file="$(find ur_description)/config/ur5e/default_kinematics.yaml"
-                    physical_parameters_file="$(find ur_description)/config/ur5e/physical_parameters.yaml"
-                    visual_parameters_file="$(find ur_description)/config/ur5e/visual_parameters.yaml"
+      joint_limits_parameters_file="$(find ur_description)/config/${right_arm}/joint_limits.yaml"
+                    kinematics_parameters_file="$(find ur_description)/config/${right_arm}/default_kinematics.yaml"
+                    physical_parameters_file="$(find ur_description)/config/${right_arm}/physical_parameters.yaml"
+                    visual_parameters_file="$(find ur_description)/config/${right_arm}/visual_parameters.yaml"
                     transmission_hw_interface="hardware_interface/VelocityJointInterface"
                     safety_limits="false"
                     safety_pos_margin="0.15"
