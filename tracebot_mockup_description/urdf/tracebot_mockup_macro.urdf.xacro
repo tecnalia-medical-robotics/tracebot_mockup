@@ -22,13 +22,17 @@
                                               left_arm
                                               right_arm">
 
+    
+    
+    
+    
     <link name="base_link"/>
 
     <link name="table">
       <visual>
-        <origin xyz="0 0 ${-table_height/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 0.525" rpy="0 0 0"/>
         <geometry>
-          <box size="${table_length} ${table_width} ${table_height}"/>
+          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/table.stl" />
         </geometry>
         <material name="grey">
           <color rgba="0.6 0.6 0.6 1.0"/>
@@ -37,33 +41,33 @@
     </link>
 
     <joint name="table_joint" type="fixed">
-      <origin xyz="0 0 ${table_height}" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <parent link="base_link"/>
       <child link="table"/>
     </joint>
 
     <link name="robot_mount_base">
       <visual>
-        <origin xyz="0 0 ${robot_mount_height/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 0.6332" rpy="0 0 0"/>
         <geometry>
-          <box size="${robot_mount_length} ${robot_mount_width} ${robot_mount_height}"/>
+          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/stand.stl" />
         </geometry>
-        <material name="dark_grey">
-          <color rgba="0.4 0.4 0.4 1.0"/>
+        <material name="grey">
+          <color rgba="0.6 0.6 0.6 1.0"/>
         </material>
       </visual>
     </link>
 
     <joint name="robot_mount_base_joint" type="fixed">
-      <origin xyz="${robot_mount_offset_x} ${robot_mount_offset_y} 0" rpy="0 0 ${robot_mount_offset_theta}"/>
-      <parent link="table"/>
+      <origin xyz="0 -0.45 0" rpy="0 0 0"/>
+      <parent link="base_link"/>
       <child link="robot_mount_base"/>
     </joint>
 
     <link name="left_robot_mount"/>
 
     <joint name="left_robot_mount_joint" type="fixed">
-      <origin xyz="${-robot_mount_length/2} 0 ${robot_mount_height/2}" rpy="0 ${-pi/2 + robot_base_tilt} 0"/>
+      <origin xyz="-0.1293 0 1.1957" rpy="0 ${-pi/2 + robot_base_tilt} 0"/>
       <parent link="robot_mount_base"/>
       <child link="left_robot_mount"/>
     </joint>
@@ -71,7 +75,7 @@
     <link name="right_robot_mount"/>
 
     <joint name="right_robot_mount_joint" type="fixed">
-      <origin xyz="${robot_mount_length/2} 0 ${robot_mount_height/2}" rpy="0 ${pi/2 - robot_base_tilt} 0"/>
+      <origin xyz="0.1293 0 1.1957" rpy="0 ${pi/2 - robot_base_tilt} 0"/>
       <parent link="robot_mount_base"/>
       <child link="right_robot_mount"/>
     </joint>
@@ -108,9 +112,9 @@
 
     <link name="pump">
       <visual>
-        <origin xyz="0 0 ${pump_height/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="${pump_length} ${pump_width} ${pump_height}"/>
+          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/pump.stl" />
         </geometry>
         <material name="pink">
           <color rgba="1.0 0.0 1.0 1.0"/>
@@ -119,7 +123,7 @@
     </link>
 
     <joint name="pump_joint" type="fixed">
-      <origin xyz="${pump_offset_x} ${pump_offset_y} 0" rpy="0 0 ${pump_offset_theta}"/>
+      <origin xyz="0 0.2 1.05" rpy="1.5708 0 0"/>
       <parent link="table"/>
       <child link="pump"/>
     </joint>
