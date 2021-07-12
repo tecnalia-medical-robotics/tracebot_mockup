@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--<arg name="table_length" default="2.0"/>
+  <arg name="table_width" default="2.0"/>
+  <arg name="table_height" default="1.0"/>
+  <arg name="robot_mount_offset_x" default="0.0"/>
+  <arg name="robot_mount_offset_y" default="-0.2"/>
+  <arg name="robot_mount_offset_theta" default="0.0"/>
+  <arg name="robot_mount_length" default="0.2"/>
+  <arg name="robot_mount_width" default="0.2"/>
+  <arg name="robot_mount_height" default="0.6"/>
+  <arg name="robot_base_tilt" default="0.0"/>
+  <arg name="pump_offset_x" default="0.0"/>
+  <arg name="pump_offset_y" default="0.2"/>
+  <arg name="pump_offset_theta" default="0.0"/>
+  <arg name="pump_length" default="0.2"/>
+  <arg name="pump_width" default="0.3"/>
+  <arg name="pump_height" default="0.4"/>
+  <arg name="left_arm" default="ur5e"/>
+  <arg name="right_arm" default="ur5e"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find tracebot_mockup_gazebo)/urdf/tracebot_mockup.urdf.xacro
+    table_length:=$(arg table_length)
+    table_width:=$(arg table_width)
+    table_height:=$(arg table_height)
+    robot_mount_offset_x:=$(arg robot_mount_offset_x)
+    robot_mount_offset_y:=$(arg robot_mount_offset_y)
+    robot_mount_offset_theta:=$(arg robot_mount_offset_theta)
+    robot_mount_length:=$(arg robot_mount_length)
+    robot_mount_width:=$(arg robot_mount_width)
+    robot_mount_height:=$(arg robot_mount_height)
+    robot_base_tilt:=$(arg robot_base_tilt)
+    pump_offset_x:=$(arg pump_offset_x)
+    pump_offset_y:=$(arg pump_offset_y)
+    pump_offset_theta:=$(arg pump_offset_theta)
+    pump_length:=$(arg pump_length)
+    pump_width:=$(arg pump_width)
+    pump_height:=$(arg pump_height)
+    left_arm:=$(arg left_arm)
+    right_arm:=$(arg right_arm)
+    "/>
+
+  <node name="robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model tracebot_mockup -x 0 -y 0 -z 0"/>
+
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_description)/config/tracebot_mockup.rviz"/-->
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find tracebot_mockup_gazebo)/worlds/tracebot_mockup_world.world"/>
+  </include>
+  
+  <param name="robot_description" command="$(find xacro)/xacro $(find tracebot_mockup_gazebo)/urdf/tracebot_mockup.urdf.xacro" />
+  
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model tracebot_mockup" />
+  
+  <!-- Convert an xacro and put on parameter server >
+<param name="robot_description" command="$(find xacro)/xacro $(find pr2_description)/robots/pr2.urdf.xacro" />
+
+< Spawn a robot into Gazebo >
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model pr2" /-->
+
+</launch>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="tracebot_mockup_gazebo">
+   
+  <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup_macro.urdf.xacro"/>
+  <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
+
+  <xacro:arg name="joint_limit_params" default=""/>
+  
+  <xacro:arg name="table_length" default="2.0"/>
+  <xacro:arg name="table_width" default="2.0"/>
+  <xacro:arg name="table_height" default="1.0"/>
+  <xacro:arg name="robot_mount_offset_x" default="0.0"/>
+  <xacro:arg name="robot_mount_offset_y" default="-0.2"/>
+  <xacro:arg name="robot_mount_offset_theta" default="0.0"/>
+  <xacro:arg name="robot_mount_length" default="0.2"/>
+  <xacro:arg name="robot_mount_width" default="0.2"/>
+  <xacro:arg name="robot_mount_height" default="0.6"/>
+  <xacro:arg name="robot_base_tilt" default="0.0"/>
+  <xacro:arg name="pump_offset_x" default="0.0"/>
+  <xacro:arg name="pump_offset_y" default="0.2"/>
+  <xacro:arg name="pump_offset_theta" default="0.0"/>
+  <xacro:arg name="pump_length" default="0.2"/>
+  <xacro:arg name="pump_width" default="0.0"/>
+  <xacro:arg name="pump_height" default="0.0"/>
+  <xacro:arg name="left_arm" default="ur5e"/>
+  <xacro:arg name="right_arm" default="ur5e"/>
+
+  <xacro:tracebot_mockup_gazebo table_length="$(arg table_length)"
+    table_width="$(arg table_width)"
+    table_height="$(arg table_height)"
+    robot_mount_offset_x="$(arg robot_mount_offset_x)"
+    robot_mount_offset_y="$(arg robot_mount_offset_y)"
+    robot_mount_offset_theta="$(arg robot_mount_offset_theta)"
+    robot_mount_length="$(arg robot_mount_length)"
+    robot_mount_width="$(arg robot_mount_width)"
+    robot_mount_height="$(arg robot_mount_height)"
+    robot_base_tilt="$(arg robot_base_tilt)"
+    pump_offset_x="$(arg pump_offset_x)"
+    pump_offset_y="$(arg pump_offset_y)"
+    pump_offset_theta="$(arg pump_offset_theta)"
+    pump_length="$(arg pump_length)"
+    pump_width="$(arg pump_width)"
+    pump_height="$(arg pump_height)"
+    left_arm="$(arg left_arm)"
+    right_arm="$(arg right_arm)"/>
+    
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>
