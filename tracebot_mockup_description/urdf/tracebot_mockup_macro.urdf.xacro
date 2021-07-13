@@ -1,55 +1,30 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
-
   <xacro:macro name="tracebot_mockup" 
-    params="table_height
-    table_length
-    table_width
+    params="
     robot_mount_offset_x
     robot_mount_offset_y
+    robot_mount_offset_z
     robot_mount_offset_theta
     robot_mount_height
     robot_mount_length
     robot_mount_width
     robot_base_tilt
-    pump_offset_x
-    pump_offset_y
-    pump_offset_theta
-    pump_height
-    pump_length
-    pump_width
     left_arm
     right_arm">
 
+    <link name="robot_base_link"/>
     
-    
-    
-    
-    <link name="base_link"/>
-
-    <link name="table">
-      <visual>
-        <origin xyz="0 0 0.525" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/table.stl" />
-        </geometry>
-        <material name="grey">
-          <color rgba="0.6 0.6 0.6 1.0"/>
-        </material>
-      </visual>
-    </link>
-
-    <joint name="table_joint" type="fixed">
+    <joint name="robot_mount_base_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="base_link"/>
-      <child link="table"/>
+      <parent link="robot_base_link"/>
+      <child link="robot_mount_base"/>
     </joint>
 
     <link name="robot_mount_base">
       <visual>
-        <origin xyz="0 0 0.6332" rpy="0 0 0"/>
+        <origin xyz="0 0 ${robot_mount_height/2}" rpy="0 0 0"/>
         <geometry>
           <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/stand.stl" />
         </geometry>
@@ -59,75 +34,25 @@
       </visual>
     </link>
 
-    <joint name="robot_mount_base_joint" type="fixed">
-      <origin xyz="0 -0.45 0" rpy="0 0 0"/>
-      <parent link="base_link"/>
-      <child link="robot_mount_base"/>
-    </joint>
-
-    <link name="left_robot_mount"/>
-
+    <!-- Left Arm Mount -->
     <joint name="left_robot_mount_joint" type="fixed">
-      <origin xyz="-0.1293 0 1.1957" rpy="0 ${-1.57079632679+robot_base_tilt} 0"/>
+      <origin xyz="${-robot_mount_offset_x} 0 ${robot_mount_height-robot_mount_offset_z}" rpy="0 ${-pi/2+robot_base_tilt} 0"/>
       <parent link="robot_mount_base"/>
       <child link="left_robot_mount"/>
     </joint>
-
-    <link name="right_robot_mount"/>
-
+    
+    <link name="left_robot_mount"/>
+    
+    <!-- Right Arm Mount -->
     <joint name="right_robot_mount_joint" type="fixed">
-      <origin xyz="0.1293 0 1.1957" rpy="0 ${1.57079632679-robot_base_tilt} 0"/>
+      <origin xyz="${robot_mount_offset_x} 0 ${robot_mount_height-robot_mount_offset_z}" rpy="0 ${pi/2-robot_base_tilt} 0"/>
       <parent link="robot_mount_base"/>
       <child link="right_robot_mount"/>
     </joint>
+    
+    <link name="right_robot_mount"/>
 
-    <xacro:ur_robot prefix="left_"
-      joint_limits_parameters_file="$(find ur_description)/config/${left_arm}/joint_limits.yaml"
-                    kinematics_parameters_file="$(find ur_description)/config/${left_arm}/default_kinematics.yaml"
-                    physical_parameters_file="$(find ur_description)/config/${left_arm}/physical_parameters.yaml"
-                    visual_parameters_file="$(find ur_description)/config/${left_arm}/visual_parameters.yaml"
-                    transmission_hw_interface="hardware_interface/VelocityJointInterface"
-                    safety_limits="false"
-                    safety_pos_margin="0.15"
-                    safety_k_position="20"/>
-    <joint name="left_base_link_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="left_robot_mount"/>
-      <child link="left_base_link"/>
-    </joint>
 
-    <xacro:ur_robot prefix="right_"
-      joint_limits_parameters_file="$(find ur_description)/config/${right_arm}/joint_limits.yaml"
-                    kinematics_parameters_file="$(find ur_description)/config/${right_arm}/default_kinematics.yaml"
-                    physical_parameters_file="$(find ur_description)/config/${right_arm}/physical_parameters.yaml"
-                    visual_parameters_file="$(find ur_description)/config/${right_arm}/visual_parameters.yaml"
-                    transmission_hw_interface="hardware_interface/VelocityJointInterface"
-                    safety_limits="false"
-                    safety_pos_margin="0.15"
-                    safety_k_position="20"/>
-    <joint name="right_base_link_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="right_robot_mount"/>
-      <child link="right_base_link"/>
-    </joint>
-
-    <link name="pump">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/pump.stl" />
-        </geometry>
-        <material name="pink">
-          <color rgba="1.0 0.0 1.0 1.0"/>
-        </material>
-      </visual>
-    </link>
-
-    <joint name="pump_joint" type="fixed">
-      <origin xyz="0 0.2 1.05" rpy="1.5708 0 0"/>
-      <parent link="table"/>
-      <child link="pump"/>
-    </joint>
 
   </xacro:macro>
 

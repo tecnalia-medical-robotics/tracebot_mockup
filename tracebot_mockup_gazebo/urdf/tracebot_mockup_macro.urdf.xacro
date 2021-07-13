@@ -1,61 +1,35 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+  <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
 
   <xacro:macro name="tracebot_mockup_gazebo" 
-    params="table_height
-    table_length
-    table_width
+    params="
     robot_mount_offset_x
     robot_mount_offset_y
+    robot_mount_offset_z
     robot_mount_offset_theta
     robot_mount_height
     robot_mount_length
     robot_mount_width
     robot_base_tilt
-    pump_offset_x
-    pump_offset_y
-    pump_offset_theta
-    pump_height
-    pump_length
-    pump_width
     left_arm
     right_arm">
 
-  <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-    
   <xacro:tracebot_mockup
-    table_height="${table_height}"
-    table_length="${table_length}"
-    table_width="${table_width}"
     robot_mount_offset_x="${robot_mount_offset_x}"
     robot_mount_offset_y="${robot_mount_offset_y}"
+    robot_mount_offset_z="${robot_mount_offset_z}"
     robot_mount_offset_theta="${robot_mount_offset_theta}"
     robot_mount_height="${robot_mount_height}"
     robot_mount_length="${robot_mount_length}"
     robot_mount_width="${robot_mount_width}"
     robot_base_tilt="${robot_base_tilt}"
-    pump_offset_x="${pump_offset_x}"
-    pump_offset_y="${pump_offset_y}"
-    pump_offset_theta="${pump_offset_theta}"
-    pump_height="${pump_height}"
-    pump_length="${pump_length}"
-    pump_width="${pump_width}"
     left_arm="${left_arm}"
     right_arm="${right_arm}"
   />
     
-    
-    
-    
-    
-    
-    <gazebo name="base_link">
-      <selfCollide>true</selfCollide>
-    </gazebo>
-
-    <gazebo name="table">
+    <gazebo name="robot_base_link">
       <selfCollide>true</selfCollide>
     </gazebo>
 
@@ -71,16 +45,12 @@
       <selfCollide>true</selfCollide>
     </gazebo>
     
-    <gazebo name="pump">
-      <selfCollide>true</selfCollide>
-    </gazebo>
-    
-    <gazebo>
+    <!--gazebo>
       <plugin name="ros_control" filename="libgazebo_ros_control.so">
-        <!--robotNamespace>/</robotNamespace-->
-        <!--robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType-->
+        <!- -robotNamespace>/</robotNamespace- ->
+        <!- -robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType- ->
       </plugin>
-    </gazebo>
+    </gazebo-->
 
   </xacro:macro>
 
