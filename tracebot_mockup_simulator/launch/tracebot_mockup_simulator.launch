@@ -23,6 +23,7 @@
   <arg name="pump_height" default="0.4"/>
 
   <include file="$(find tracebot_mockup_description)/launch/view_tracebot_mockup.launch" pass_all_args="True"/>
+  <include file="$(find tracebot_mockup_description)/launch/camera_display.launch"/>
 
   <group ns="tracebot">
 
