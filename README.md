@@ -41,16 +41,30 @@ All parameters use SI units.
 
 ## Usage
 
-Currently this repository offers the `view_tracebot_mockup.launch` file, inside `tracebot_mockup_description` to visualize the mockup model using rviz.
+Currently this repository offers the `tracebot_mockup_simulator.launch` file, inside `tracebot_mockup_simulator` to start the simulated mockup model and visualize it using rviz.
 
 This launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
 For instance, to visualize the model with a 30 degree tilt of the robot bases, run:
 
 ```bash
-roslaunch tracebot_mockup_description view_tracebot_mockup.launch robot_base_tilt:=0.5236
+roslaunch tracebot_mockup_simulator tracebot_mockup_simulator.launch robot_base_tilt:=0.5236
 ```
 
-A camera view can be added to rviz:
+The suggested way to interact with this simulator at this point is to use `rqt_controller_manager` and `rqt_joint_trajectory_controller` to interact with the default controllers in the simulation.
+
+Alternatively, a simpler visualization can be started by launching a `joint_state_publisher_gui`-based setup with:
+
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch interactive:=true
+```
+
+The simple visualization allows the initial position of each of the joints to be configured using roslaunch arguments, such as:
+
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch interactive:=true left_shoulder_pan_position:=0.0
+```
+
+A camera view can be added to rviz when viewing either the simulator or the simple visualization with:
 
 ```bash
 roslaunch tracebot_mockup_description camera_display.launch
@@ -112,13 +126,20 @@ This is a small wrapper tool around the docker CLI which facilitates tasks such 
 The mockup with default parameters can be run using rocker with:
 
 ```bash
-rocker --x11 -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+rocker --x11 --name tracebot -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_simulator tracebot_mockup_simulator.launch
 ```
 
 Note that if your system runs NVidia graphics, you may need to use:
 
 ```bash
-rocker --x11 --nvidia -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+rocker --x11 --nvidia --name tracebot -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_mockup_description view_tracebot_mockup.launch
 ```
 
 Alternatively, instructions to enable X11 forwarding in docker in different ways can be found in [this page](http://wiki.ros.org/docker/Tutorials/GUI).
+
+Additional commands may be run in the same container running the simulator using `docker exec`.
+E.g. add the camera visualization with:
+
+```bash
+docker exec -it tracebot bash -c 'source /opt/ros/tracebot_mockup/setup.bash; roslaunch tracebot_mockup_description camera_display.launch
+```

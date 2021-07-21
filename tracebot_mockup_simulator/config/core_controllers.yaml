@@ -1,0 +1,129 @@
+joint_state_controller:
+  type:         joint_state_controller/JointStateController
+  publish_rate: 50
+
+joint_trajectory_controller:
+  type: velocity_controllers/JointTrajectoryController
+  joints:
+    - left_shoulder_pan_joint
+    - left_shoulder_lift_joint
+    - left_elbow_joint
+    - left_wrist_1_joint
+    - left_wrist_2_joint
+    - left_wrist_3_joint
+    - right_shoulder_pan_joint
+    - right_shoulder_lift_joint
+    - right_elbow_joint
+    - right_wrist_1_joint
+    - right_wrist_2_joint
+    - right_wrist_3_joint
+  constraints:
+    goal_time: &goal_time 5.0
+    left_shoulder_pan_joint: &joint_constraints
+      trajectory: 0.60
+      goal:       0.15
+    left_shoulder_lift_joint: *joint_constraints
+    left_elbow_joint: *joint_constraints
+    left_wrist_1_joint: *joint_constraints
+    left_wrist_2_joint: *joint_constraints
+    left_wrist_3_joint: *joint_constraints
+    right_shoulder_pan_joint: *joint_constraints
+    right_shoulder_lift_joint: *joint_constraints
+    right_elbow_joint: *joint_constraints
+    right_wrist_1_joint: *joint_constraints
+    right_wrist_2_joint: *joint_constraints
+    right_wrist_3_joint: *joint_constraints
+  gains:
+    left_shoulder_pan_joint: &joint_pid
+      p: 2.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 1.0
+    left_shoulder_lift_joint: *joint_pid
+    left_elbow_joint: *joint_pid
+    left_wrist_1_joint: *joint_pid
+    left_wrist_2_joint: *joint_pid
+    left_wrist_3_joint: *joint_pid
+    right_shoulder_pan_joint: *joint_pid
+    right_shoulder_lift_joint: *joint_pid
+    right_elbow_joint: *joint_pid
+    right_wrist_1_joint: *joint_pid
+    right_wrist_2_joint: *joint_pid
+    right_wrist_3_joint: *joint_pid
+  velocity_ff:
+    left_shoulder_pan_joint: &joint_vel_ff 1.0
+    left_shoulder_lift_joint: *joint_vel_ff
+    left_elbow_joint: *joint_vel_ff
+    left_wrist_1_joint: *joint_vel_ff
+    left_wrist_2_joint: *joint_vel_ff
+    left_wrist_3_joint: *joint_vel_ff
+    right_shoulder_pan_joint: *joint_vel_ff
+    right_shoulder_lift_joint: *joint_vel_ff
+    right_elbow_joint: *joint_vel_ff
+    right_wrist_1_joint: *joint_vel_ff
+    right_wrist_2_joint: *joint_vel_ff
+    right_wrist_3_joint: *joint_vel_ff
+
+left_joint_trajectory_controller:
+  type: velocity_controllers/JointTrajectoryController
+  joints:
+    - left_shoulder_pan_joint
+    - left_shoulder_lift_joint
+    - left_elbow_joint
+    - left_wrist_1_joint
+    - left_wrist_2_joint
+    - left_wrist_3_joint
+  constraints:
+    goal_time: *goal_time
+    left_shoulder_pan_joint: *joint_constraints
+    left_shoulder_lift_joint: *joint_constraints
+    left_elbow_joint: *joint_constraints
+    left_wrist_1_joint: *joint_constraints
+    left_wrist_2_joint: *joint_constraints
+    left_wrist_3_joint: *joint_constraints
+  gains:
+    left_shoulder_pan_joint: *joint_pid
+    left_shoulder_lift_joint: *joint_pid
+    left_elbow_joint: *joint_pid
+    left_wrist_1_joint: *joint_pid
+    left_wrist_2_joint: *joint_pid
+    left_wrist_3_joint: *joint_pid
+  velocity_ff:
+    left_shoulder_pan_joint: *joint_vel_ff
+    left_shoulder_lift_joint: *joint_vel_ff
+    left_elbow_joint: *joint_vel_ff
+    left_wrist_1_joint: *joint_vel_ff
+    left_wrist_2_joint: *joint_vel_ff
+    left_wrist_3_joint: *joint_vel_ff
+
+right_joint_trajectory_controller:
+  type: velocity_controllers/JointTrajectoryController
+  joints:
+    - right_shoulder_pan_joint
+    - right_shoulder_lift_joint
+    - right_elbow_joint
+    - right_wrist_1_joint
+    - right_wrist_2_joint
+    - right_wrist_3_joint
+  constraints:
+    goal_time: *goal_time
+    right_shoulder_pan_joint: *joint_constraints
+    right_shoulder_lift_joint: *joint_constraints
+    right_elbow_joint: *joint_constraints
+    right_wrist_1_joint: *joint_constraints
+    right_wrist_2_joint: *joint_constraints
+    right_wrist_3_joint: *joint_constraints
+  gains:
+    right_shoulder_pan_joint: *joint_pid
+    right_shoulder_lift_joint: *joint_pid
+    right_elbow_joint: *joint_pid
+    right_wrist_1_joint: *joint_pid
+    right_wrist_2_joint: *joint_pid
+    right_wrist_3_joint: *joint_pid
+  velocity_ff:
+    right_shoulder_pan_joint: *joint_vel_ff
+    right_shoulder_lift_joint: *joint_vel_ff
+    right_elbow_joint: *joint_vel_ff
+    right_wrist_1_joint: *joint_vel_ff
+    right_wrist_2_joint: *joint_vel_ff
+    right_wrist_3_joint: *joint_vel_ff

@@ -1,4 +1,8 @@
 repositories:
+  ros_control_boilerplate:
+    type: git
+    url: https://github.com/RobertWilbrandt/ros_control_boilerplate.git
+    version: noetic-devel_combined_robot_hw
   universal_robot:
     type: git
     url: https://github.com/ros-industrial/universal_robot.git
