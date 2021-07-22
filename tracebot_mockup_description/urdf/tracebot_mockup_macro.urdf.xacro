@@ -11,7 +11,7 @@
                                               robot_base_tilt
                                               left_arm
                                               right_arm">
-
+    <!-- Base -->
     <link name="base_link"/>
     
     <joint name="robot_mount_base_joint" type="fixed">
@@ -50,8 +50,6 @@
     </joint>
     
     <link name="right_robot_mount"/>
-
-
 
   </xacro:macro>
 

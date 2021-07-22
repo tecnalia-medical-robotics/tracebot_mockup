@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur">
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="tracebot_mockup">
    
   <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
 
+  <!--Add parameters to robot base-->
   <xacro:tracebot_mockup
     robot_mount_offset_x="$(arg robot_mount_offset_x)"
     robot_mount_offset_y="$(arg robot_mount_offset_y)"
@@ -15,7 +16,8 @@
     robot_base_tilt="$(arg robot_base_tilt)"
     left_arm="$(arg left_arm)"
     right_arm="$(arg right_arm)"/>
-    
+   
+  <!--Add parameters to robot arms-->
   <xacro:ur_robot prefix="left_"
     joint_limits_parameters_file="$(find ur_description)/config/$(arg left_arm)/joint_limits.yaml"
     kinematics_parameters_file="$(find ur_description)/config/$(arg left_arm)/default_kinematics.yaml"
@@ -36,6 +38,7 @@
     safety_pos_margin="0.15"
     safety_k_position="20"/>
   
+  <!-- Link arms to base -->
   <joint name="left_base_link_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="left_robot_mount"/>
