@@ -23,9 +23,6 @@ The table below lists the available parameters and their meaning.
 
 | Parameter name | Description |
 | -------------- | ----------- |
-| `table_height` | Height of the box representing the table. | 
-| `table_length` | Length of the box representing the table. |
-| `table_width` | Width of the box representing the table. |
 | `robot_mount_offset_x` | Offset in X direction of the robot mount block with respect to the center of the table. |
 | `robot_mount_offset_y` | Offset in Y direction of the robot mount block with respect to the center of the table. |
 | `robot_mount_offset_theta` | Rotational offset around Z of the robot mount block with respect to the center of the table. |
@@ -73,7 +70,31 @@ The intrinsic camera parameters are defined using the standard ROS format, and s
 The pose of the camera in the world is defined within the launchfile [camera_display.launch](tracebot_mockup_description/launch/camera_display.launch)
 
 ### Launch Gazebo
-TODO
+| Parameter name | Description |
+| -------------- | ----------- |
+|`controller_config_file`|`Config file used for defining the ROS-Control controllers.`|
+|`controllers`|`Controllers that are activated by default.`|
+|`stopped_controllers`|`Controllers that are initally loaded, but not started.`|
+|`tf_prefix`|`tf_prefix used for the robot.`|
+|`tf_pub_rate`|`Rate at which robot_state_publisher should publish transforms.`|
+|`paused`|`Starts Gazebo in paused mode`|
+|`gui`|`Starts Gazebo gui`|
+As shown above, the gazebo launch file has some additional parameters that can be set. However any of the previously stated parameters can also be used.
+
+- This can be launched with the default using:
+```bash
+roslaunch tracebot_mockup_gazebo view_tracebot_mockup.launch view_tracebot_gazebo.launch
+```
+- Or using any of the available parameters, such as starting the simulation paused:
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch paused:=true
+```
+The arms can then be communicated with by publishing to the `/pos_joint_traj_controller/command` topic which uses [JointTrajectory messages](http://docs.ros.org/en/noetic/api/trajectory_msgs/html/msg/JointTrajectory.html). An example of this can be found in the [scripts/gazebo_model_test.py](tracebot_mockup_gazebo/scripts/gazebo_model_test.py) file.
+To run this, and test that the gazebo simulation is working, run:
+```bash
+rosrun tracebot_mockup_gazebo gazebo_model_test.py
+```
+You should see that all the motors trigger and the arms curl up.
 
 ## Setup
 
@@ -111,11 +132,6 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
   ```bash
   cd ~/path/to/tracebot_mockup_ws
   catkin build
-  ```
-- Run mockup with default parameters:
-  ```bash
-  source ~/path/to/tracebot_mockup_ws/devel/setup.bash
-  roslaunch tracebot_mockup_description view_tracebot_mockup.launch
   ```
 
 ### Using docker images
