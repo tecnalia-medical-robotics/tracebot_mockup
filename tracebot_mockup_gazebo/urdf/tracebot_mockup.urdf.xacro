@@ -44,7 +44,6 @@
     safety_limits="false"
     safety_pos_margin="0.15"
     safety_k_position="20"/>
-    <xacro:ur_arm_transmission prefix="left_" hw_interface="$(arg transmission_hw_interface)" />
     
   <xacro:ur_robot_gazebo prefix="right_"
     joint_limits_parameters_file="$(find ur_description)/config/$(arg right_arm)/joint_limits.yaml"
@@ -55,8 +54,6 @@
     safety_limits="false"
     safety_pos_margin="0.15"
     safety_k_position="20"/>
-    
-  <xacro:ur_arm_transmission prefix="right_" hw_interface="$(arg transmission_hw_interface)" />
 
   <!--Link arms to base-->
   <joint name="left_base_link_joint" type="fixed">
