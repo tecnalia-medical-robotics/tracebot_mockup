@@ -2,16 +2,9 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="tracebot_mockup_gazebo">
    
   <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-  <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-  <xacro:include filename="$(find ur_gazebo)/urdf/ur_macro.xacro"/>
-  
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur_transmissions.xacro" />
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur_common.xacro" />
-  
-  
+  <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/ur_macro.xacro"/>
 
-  <xacro:arg name="joint_limit_params" default=""/>
-  
+  <!--Robot base parameters-->
   <xacro:arg name="robot_mount_offset_x" default="0.1293"/>
   <xacro:arg name="robot_mount_offset_y" default="0.0"/>
   <xacro:arg name="robot_mount_offset_z" default="0.0707"/>
@@ -25,8 +18,10 @@
   <xacro:arg name="left_arm" default="ur5e"/>
   <xacro:arg name="right_arm" default="ur5e"/>
   
+  <!--Robot arm parameters-->
   <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
 
+  <!--Add parameters to robot base-->
   <xacro:tracebot_mockup_gazebo
     robot_mount_offset_x="$(arg robot_mount_offset_x)"
     robot_mount_offset_y="$(arg robot_mount_offset_y)"
@@ -39,49 +34,53 @@
     left_arm="$(arg left_arm)"
     right_arm="$(arg right_arm)"/>
     
-  <xacro:ur_robot_gazebo prefix=""
+  <!--Add parameters to robot arms--> 
+  <xacro:ur_robot_gazebo prefix="left_"
     joint_limits_parameters_file="$(find ur_description)/config/$(arg left_arm)/joint_limits.yaml"
     kinematics_parameters_file="$(find ur_description)/config/$(arg left_arm)/default_kinematics.yaml"
     physical_parameters_file="$(find ur_description)/config/$(arg left_arm)/physical_parameters.yaml"
     visual_parameters_file="$(find ur_description)/config/$(arg left_arm)/visual_parameters.yaml"
-    transmission_hw_interface="hardware_interface/VelocityJointInterface"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
     safety_limits="false"
     safety_pos_margin="0.15"
     safety_k_position="20"/>
-    <!-- Add URDF transmission elements (for ros_control) -->
-    <xacro:ur_arm_transmission prefix="" hw_interface="$(arg transmission_hw_interface)" />
-                    
+    
   <xacro:ur_robot_gazebo prefix="right_"
     joint_limits_parameters_file="$(find ur_description)/config/$(arg right_arm)/joint_limits.yaml"
     kinematics_parameters_file="$(find ur_description)/config/$(arg right_arm)/default_kinematics.yaml"
     physical_parameters_file="$(find ur_description)/config/$(arg right_arm)/physical_parameters.yaml"
     visual_parameters_file="$(find ur_description)/config/$(arg right_arm)/visual_parameters.yaml"
-    transmission_hw_interface="hardware_interface/VelocityJointInterface"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
     safety_limits="false"
     safety_pos_margin="0.15"
     safety_k_position="20"/>
-  <!-- Add URDF transmission elements (for ros_control) -->
-  <xacro:ur_arm_transmission prefix="right_" hw_interface="$(arg transmission_hw_interface)" />
-    
-  <!-- Attach arms to base -->
-    
+
+  <!--Link arms to base-->
   <joint name="left_base_link_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="left_robot_mount"/>
-    <child link="base_link"/>
+    <child link="left_base_link"/>
   </joint>
-    
+
   <joint name="right_base_link_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="right_robot_mount"/>
     <child link="right_base_link"/>
   </joint>
-    
+  
+  <!--Link base to world-->
   <link name="world"/>
   <joint name="world_joint" type="fixed">
     <parent link="world"/>
-    <child link="robot_base_link"/>
+    <child link="base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
-
+  
+  <gazebo>
+    <plugin name="ros_control" filename="libgazebo_ros_control.so">
+      <!--robotNamespace>/</robotNamespace-->
+      <!--robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType-->
+    </plugin>
+  </gazebo>
+    
 </robot>

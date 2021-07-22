@@ -1,24 +1,22 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:macro name="tracebot_mockup" 
-    params="
-    robot_mount_offset_x
-    robot_mount_offset_y
-    robot_mount_offset_z
-    robot_mount_offset_theta
-    robot_mount_height
-    robot_mount_length
-    robot_mount_width
-    robot_base_tilt
-    left_arm
-    right_arm">
-
-    <link name="robot_base_link"/>
+  <xacro:macro name="tracebot_mockup" params="robot_mount_offset_x
+                                              robot_mount_offset_y
+                                              robot_mount_offset_z
+                                              robot_mount_offset_theta
+                                              robot_mount_height
+                                              robot_mount_length
+                                              robot_mount_width
+                                              robot_base_tilt
+                                              left_arm
+                                              right_arm">
+    <!-- Base -->
+    <link name="base_link"/>
     
     <joint name="robot_mount_base_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="robot_base_link"/>
+      <parent link="base_link"/>
       <child link="robot_mount_base"/>
     </joint>
 
@@ -33,7 +31,8 @@
         </material>
       </visual>
     </link>
-
+    
+    
     <!-- Left Arm Mount -->
     <joint name="left_robot_mount_joint" type="fixed">
       <origin xyz="${-robot_mount_offset_x} 0 ${robot_mount_height-robot_mount_offset_z}" rpy="0 ${-pi/2+robot_base_tilt} 0"/>
@@ -51,8 +50,6 @@
     </joint>
     
     <link name="right_robot_mount"/>
-
-
 
   </xacro:macro>
 
