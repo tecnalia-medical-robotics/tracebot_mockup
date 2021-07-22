@@ -79,6 +79,7 @@ The pose of the camera in the world is defined within the launchfile [camera_dis
 |`tf_pub_rate`|`Rate at which robot_state_publisher should publish transforms.`|
 |`paused`|`Starts Gazebo in paused mode`|
 |`gui`|`Starts Gazebo gui`|
+
 As shown above, the gazebo launch file has some additional parameters that can be set. However any of the previously stated parameters can also be used.
 
 - This can be launched with the default using:
