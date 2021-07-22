@@ -1,6 +1,6 @@
 # Tracebot Mockup
 
-This repository contains ROS packages to run a simulated mockup of the Tracebot setup.
+This repository contains ROS packages to run a simulated mockup of the Tracebot setup in Rviz and Gazebo.
 The objective is to analyse different placements of the robots and equipment in regard to reachability and manipulability.
 
 ![Tracebot mockup screenshot](.res/mockup.png)
@@ -9,9 +9,12 @@ The objective is to analyse different placements of the robots and equipment in 
 
 - [Model Parameters](#model-parameters)
 - [Usage](#usage)
+  - [Launch Rviz](#launch-rviz)
+  - [Launch Gazebo](#launch-gazebo)
 - [Setup](#setup)
   - [Installing locally](#installing-locally)
   - [Using docker images](#using-docker-images)
+
 
 ## Model Parameters
 
@@ -42,14 +45,22 @@ The table below lists the available parameters and their meaning.
 All parameters use SI units.
 
 ## Usage
+### Launch Rviz
+This repository offers visualisation of the mockup model within rviz using the `view_tracebot_mockup.launch` file, inside `tracebot_mockup_description`.
 
-Currently this repository offers the `view_tracebot_mockup.launch` file, inside `tracebot_mockup_description` to visualize the mockup model using rviz.
+The rviz simulation give a basic visualisation of the robot with any of the robot arms (the default being ur5e). The launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
 
-This launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
-For instance, to visualize the model with a 30 degree tilt of the robot bases, run:
-
+Firsly ensuring that the workspace is sourced:
 ```bash
-roslaunch tracebot_mockup_description view_tracebot_mockup.launch robot_base_tilt:=0.5236
+source ~/path/to/tracebot_mockup_ws/devel/setup.bash
+```
+- The mockup can be run with default parameters:
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+```
+- Or using any of the available parameters, such as exchanging the left arm for the ur10e model:
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch left_arm:="ur10e"
 ```
 
 A camera view can be added to rviz:
@@ -60,6 +71,9 @@ roslaunch tracebot_mockup_description camera_display.launch
 
 The intrinsic camera parameters are defined using the standard ROS format, and stored in [head_camera.yaml](tracebot_mockup_description/config/head_camera.yaml).
 The pose of the camera in the world is defined within the launchfile [camera_display.launch](tracebot_mockup_description/launch/camera_display.launch)
+
+### Launch Gazebo
+TODO
 
 ## Setup
 
@@ -124,3 +138,4 @@ rocker --x11 --nvidia -- miguelprada/tracebot_mockup:noetic roslaunch tracebot_m
 ```
 
 Alternatively, instructions to enable X11 forwarding in docker in different ways can be found in [this page](http://wiki.ros.org/docker/Tutorials/GUI).
+
