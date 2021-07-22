@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="tracebot_mockup_gazebo">
    
   <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-  <xacro:include filename="$(find ur_gazebo)/urdf/ur_macro.xacro"/>
+  <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/ur_macro.xacro"/>
 
   <!--Robot base parameters-->
   <xacro:arg name="robot_mount_offset_x" default="0.1293"/>
