@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:macro name="tracebot_mockup" params="
-    robot_mount_offset_x
-    robot_mount_offset_y
-    robot_mount_offset_z
-    robot_mount_offset_theta
-    robot_mount_height
-    robot_mount_length
-    robot_mount_width
-    robot_base_tilt
-    left_arm
-    right_arm">
+  <xacro:macro name="tracebot_mockup" params="robot_mount_offset_x
+                                              robot_mount_offset_y
+                                              robot_mount_offset_z
+                                              robot_mount_offset_theta
+                                              robot_mount_height
+                                              robot_mount_length
+                                              robot_mount_width
+                                              robot_base_tilt
+                                              left_arm
+                                              right_arm">
 
     <link name="base_link"/>
     

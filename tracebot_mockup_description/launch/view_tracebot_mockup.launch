@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+  <!--Define parameters for tracebot model-->
   <arg name="robot_mount_offset_x" default="0.1293"/>
   <arg name="robot_mount_offset_y" default="0.0"/>
   <arg name="robot_mount_offset_z" default="0.0707"/>
@@ -11,6 +12,7 @@
   <arg name="left_arm" default="ur5e"/>
   <arg name="right_arm" default="ur5e"/>
 
+  <!--Load parameters into robot-->
   <param name="robot_description" command="$(find xacro)/xacro $(find tracebot_mockup_description)/urdf/tracebot_mockup.urdf.xacro
     robot_mount_offset_x:=$(arg robot_mount_offset_x)
     robot_mount_offset_y:=$(arg robot_mount_offset_y)
@@ -24,6 +26,7 @@
     right_arm:=$(arg right_arm)
     "/>
 
+  <!--Load robot in Rviz-->
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_description)/config/tracebot_mockup.rviz"/>
