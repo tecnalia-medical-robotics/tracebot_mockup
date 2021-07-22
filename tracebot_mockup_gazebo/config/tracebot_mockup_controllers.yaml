@@ -11,6 +11,7 @@ pos_joint_traj_controller:
     - left_wrist_1_joint
     - left_wrist_2_joint
     - left_wrist_3_joint
+    
     - right_shoulder_pan_joint
     - right_shoulder_lift_joint
     - right_elbow_joint
@@ -26,6 +27,7 @@ pos_joint_traj_controller:
     left_wrist_1_joint: {trajectory: 0.1, goal: 0.1}
     left_wrist_2_joint: {trajectory: 0.1, goal: 0.1}
     left_wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+    
     right_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
     right_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
     right_elbow_joint: {trajectory: 0.1, goal: 0.1}

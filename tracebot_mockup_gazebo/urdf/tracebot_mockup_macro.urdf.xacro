@@ -15,6 +15,7 @@
     
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
     
+    <!--Pass arguments to tracebot_mockup-->
     <xacro:tracebot_mockup
       robot_mount_offset_x="${robot_mount_offset_x}"
       robot_mount_offset_y="${robot_mount_offset_y}"
@@ -28,9 +29,9 @@
       right_arm="${right_arm}"
     />
 
+    <!--Add collision to base-->
     <gazebo reference="robot_mount_base">
       <selfCollide>true</selfCollide>
     </gazebo>
   </xacro:macro>
-
 </robot>
