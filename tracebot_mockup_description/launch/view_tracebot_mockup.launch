@@ -11,6 +11,7 @@
   <arg name="robot_base_tilt" default="0.785398"/>
   <arg name="left_arm" default="ur5e"/>
   <arg name="right_arm" default="ur5e"/>
+  <arg name="camera_mount_offset_z" default="0.65169"/>
 
   <!--Load parameters into robot-->
   <param name="robot_description" command="$(find xacro)/xacro $(find tracebot_mockup_description)/urdf/tracebot_mockup.urdf.xacro
@@ -24,10 +25,11 @@
     robot_base_tilt:=$(arg robot_base_tilt)
     left_arm:=$(arg left_arm)
     right_arm:=$(arg right_arm)
+    camera_mount_offset_z:=$(arg camera_mount_offset_z)
     "/>
 
   <!--Load robot in Rviz-->
-  <!--node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/-->
-  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/-->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_description)/config/tracebot_mockup.rviz"/>
 </launch>

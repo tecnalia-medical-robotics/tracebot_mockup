@@ -10,7 +10,8 @@
                                               robot_mount_width
                                               robot_base_tilt
                                               left_arm
-                                              right_arm">
+                                              right_arm
+                                              camera_mount_offset_z">
     <!-- Base -->
     <link name="base_link"/>
     
@@ -50,5 +51,14 @@
     </joint>
     
     <link name="right_robot_mount"/>
+    
+    <!-- Camera Mount -->
+    <joint name="camera_mount_joint" type="fixed">
+      <origin xyz="0 0 ${robot_mount_height+camera_mount_offset_z}" rpy="0 0 0"/>
+      <parent link="robot_mount_base"/>
+      <child link="camera_mount"/>
+    </joint>
+    
+    <link name="camera_mount"/>
   </xacro:macro>
 </robot>

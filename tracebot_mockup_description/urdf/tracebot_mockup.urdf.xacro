@@ -15,7 +15,8 @@
     robot_mount_height="$(arg robot_mount_height)"
     robot_base_tilt="$(arg robot_base_tilt)"
     left_arm="$(arg left_arm)"
-    right_arm="$(arg right_arm)"/>
+    right_arm="$(arg right_arm)"
+    camera_mount_offset_z="$(arg camera_mount_offset_z)"/>
    
   <!--Add parameters to robot arms-->
   <xacro:ur_robot prefix="left_"
@@ -50,4 +51,11 @@
     <parent link="right_robot_mount"/>
     <child link="right_base_link"/>
   </joint>
+  
+  <!-- Link camera to base -->
+  <!--joint name="camera_base_link_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="camera_mount"/>
+    <child link="camera_base_link"/>
+  </joint-->
 </robot>
