@@ -16,6 +16,8 @@
   
   <arg name="left_arm" default="ur5e"/>
   <arg name="right_arm" default="ur5e"/>
+  
+  <arg name="rviz" default="false"/>
 
   <!--Add arguments to robot description-->
   <param name="robot_description" command="$(find xacro)/xacro '$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup.urdf.xacro'
@@ -59,4 +61,6 @@
     <arg name="paused" value="$(arg paused)"/>
     <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
   </include>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_gazebo)/config/tracebot_mockup.rviz" if="$(arg rviz)"/>
 </launch>
