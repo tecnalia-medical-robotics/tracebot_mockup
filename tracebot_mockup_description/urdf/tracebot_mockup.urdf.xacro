@@ -40,13 +40,13 @@
   
   <!-- Link arms to base -->
   <joint name="left_base_link_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 1.5708"/>
     <parent link="left_robot_mount"/>
     <child link="left_base_link"/>
   </joint>
 
   <joint name="right_base_link_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
     <parent link="right_robot_mount"/>
     <child link="right_base_link"/>
   </joint>

@@ -3,7 +3,7 @@
 This repository contains ROS packages to run a simulated mockup of the Tracebot setup.
 The objective is to analyse different placements of the robots and equipment in regard to reachability and manipulability.
 
-![Tracebot mockup screenshot](.res/mockup.png)
+![Tracebot mockup screenshot](.res/mockup_updated_model.png)
 
 ## Table of Contents
 
@@ -20,22 +20,14 @@ The table below lists the available parameters and their meaning.
 
 | Parameter name | Description |
 | -------------- | ----------- |
-| `table_height` | Height of the box representing the table. | 
-| `table_length` | Length of the box representing the table. |
-| `table_width` | Width of the box representing the table. |
-| `robot_mount_offset_x` | Offset in X direction of the robot mount block with respect to the center of the table. |
-| `robot_mount_offset_y` | Offset in Y direction of the robot mount block with respect to the center of the table. |
-| `robot_mount_offset_theta` | Rotational offset around Z of the robot mount block with respect to the center of the table. |
-| `robot_mount_height` | Height of the robot mount block. |
-| `robot_mount_length` | Length of the robot mount block. |
-| `robot_mount_width` | Width of the robot mount block. |
+| `robot_mount_offset_x` | Offset in X direction of the robot arm with respect to the center of the stand. |
+| `robot_mount_offset_y` | Offset in Y direction of the robot arm with respect to the center of the stand. |
+| `robot_mount_offset_z` | Offset in Z direction of the robot arm with respect to the top of the stand. |
+| `robot_mount_offset_theta` | Rotational offset around Z of the robot arm with respect to the center of the stand. |
+| `robot_mount_height` | Height of the robot stand. |
+| `robot_mount_length` | Length of the robot stand. |
+| `robot_mount_width` | Width of the robot stand. |
 | `robot_base_tilt` | Angular upward tilt of the robot bases. |
-| `pump_offset_x` | Offset in X direction of the block representing the pump with respect to the center of the table. |
-| `pump_offset_y` | Offset in Y direction of the block representing the pump with respect to the center of the table. |
-| `pump_offset_theta` | Rotational offset around Z of the block representing the pump with respect to the center of the table. |
-| `pump_height` | Height of the block representing the pump. |
-| `pump_length` | Length of the block representing the pump. |
-| `pump_width` | Width of the block representing the pump. |
 | `left_arm` | Robot arm name used for left arm. (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
 | `right_arm` | Robot arm name used for right arm. (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
 
@@ -46,10 +38,10 @@ All parameters use SI units.
 Currently this repository offers the `view_tracebot_mockup.launch` file, inside `tracebot_mockup_description` to visualize the mockup model using rviz.
 
 This launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
-For instance, to visualize the model with a 30 degree tilt of the robot bases, run:
+For instance, to visualize the model with an alternate arm (e.g. ur10e), run:
 
 ```bash
-roslaunch tracebot_mockup_description view_tracebot_mockup.launch robot_base_tilt:=0.5236
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch left_arm:="ur10e"
 ```
 
 A camera view can be added to rviz:
@@ -81,7 +73,7 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
 - Pull the packages into the repository:
   ```bash
   cd ~/path/to/tracebot_mockup_ws/src
-  git clone https://github.com/BenRJG/tracebot_mockup.git # <=Branch Original => git clone https://github.com/tecnalia-medical-robotics/tracebot_mockup.git
+  git clone https://github.com/tecnalia-medical-robotics/tracebot_mockup.git
   ```
 - Certain dependencies are not released as binary packages to either Melodic or Noetic, pull those into the workspace as well:
   ```bash
