@@ -3,22 +3,15 @@
    
   <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
 
-  <xacro:tracebot_mockup table_length="$(arg table_length)"
-    table_width="$(arg table_width)"
-    table_height="$(arg table_height)"
+  <xacro:tracebot_mockup
     robot_mount_offset_x="$(arg robot_mount_offset_x)"
     robot_mount_offset_y="$(arg robot_mount_offset_y)"
+    robot_mount_offset_z="$(arg robot_mount_offset_z)"
     robot_mount_offset_theta="$(arg robot_mount_offset_theta)"
     robot_mount_length="$(arg robot_mount_length)"
     robot_mount_width="$(arg robot_mount_width)"
     robot_mount_height="$(arg robot_mount_height)"
     robot_base_tilt="$(arg robot_base_tilt)"
-    pump_offset_x="$(arg pump_offset_x)"
-    pump_offset_y="$(arg pump_offset_y)"
-    pump_offset_theta="$(arg pump_offset_theta)"
-    pump_length="$(arg pump_length)"
-    pump_width="$(arg pump_width)"
-    pump_height="$(arg pump_height)"
     left_arm="$(arg left_arm)"
     right_arm="$(arg right_arm)"/>
 
