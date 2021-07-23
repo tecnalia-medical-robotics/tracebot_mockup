@@ -13,3 +13,7 @@ endif()
 install(DIRECTORY config launch urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/
 )
+
+catkin_install_python(PROGRAMS scripts/gazebo_model_test.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

@@ -45,7 +45,7 @@
     safety_pos_margin="0.15"
     safety_k_position="20"/>
     
-  <xacro:ur_robot_gazebo prefix="right_"
+  <!--xacro:ur_robot_gazebo prefix="right_"
     joint_limits_parameters_file="$(find ur_description)/config/$(arg right_arm)/joint_limits.yaml"
     kinematics_parameters_file="$(find ur_description)/config/$(arg right_arm)/default_kinematics.yaml"
     physical_parameters_file="$(find ur_description)/config/$(arg right_arm)/physical_parameters.yaml"
@@ -53,7 +53,7 @@
     transmission_hw_interface="$(arg transmission_hw_interface)"
     safety_limits="false"
     safety_pos_margin="0.15"
-    safety_k_position="20"/>
+    safety_k_position="20"/-->
 
   <!--Link arms to base-->
   <joint name="left_base_link_joint" type="fixed">
@@ -62,11 +62,11 @@
     <child link="left_base_link"/>
   </joint>
 
-  <joint name="right_base_link_joint" type="fixed">
+  <!--joint name="right_base_link_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
     <parent link="right_robot_mount"/>
     <child link="right_base_link"/>
-  </joint>
+  </joint-->
   
   <!--Link base to world-->
   <link name="world"/>
