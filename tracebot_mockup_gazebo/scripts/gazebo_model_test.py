@@ -20,13 +20,13 @@ def gazebo_model_test():
 		tracebot = JointTrajectory()
 		point = JointTrajectoryPoint()
 	
-		tracebot.joint_names = ['left_shoulder_pan_joint', 'left_shoulder_lift_joint', 'left_elbow_joint', 'left_wrist_1_joint', 'left_wrist_2_joint', 'left_wrist_3_joint']#,'right_shoulder_pan_joint', 'right_shoulder_lift_joint', 'right_elbow_joint', 'right_wrist_1_joint', 'right_wrist_2_joint', 'right_wrist_3_joint']
+		tracebot.joint_names = ['left_shoulder_pan_joint', 'left_shoulder_lift_joint', 'left_elbow_joint', 'left_wrist_1_joint', 'left_wrist_2_joint', 'left_wrist_3_joint','right_shoulder_pan_joint', 'right_shoulder_lift_joint', 'right_elbow_joint', 'right_wrist_1_joint', 'right_wrist_2_joint', 'right_wrist_3_joint']
 		tracebot.header.stamp = rospy.Time.now()
 		
-		point.positions = [1.5,1.5,1.5,1.5,1.5]#,1.5,1.5,1.5,1.5,1.5,1.5,1.5]
-		point.velocities = [1.0,1.0,1.0,1.0,1.0]#,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
-		point.accelerations = [1.0,1.0,1.0,1.0,1.0]#,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
-		point.effort = [1.0,1.0,1.0,1.0,1.0]#,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
+		point.positions = [1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]
+		point.velocities = [1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
+		point.accelerations = [1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
+		point.effort = [1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
 		point.time_from_start = rospy.Duration(2)
 		tracebot.points.append(point)
 		
