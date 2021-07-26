@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /TF1
+        - /TF1/Frames1
         - /Camera1
       Splitter Ratio: 0.5
     Tree Height: 1078
@@ -59,9 +60,15 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        camera_mount:
+          Value: false
         tracebot_arm_mount_base:
           Value: false
         tracebot_base_link:
+          Value: true
+        tracebot_camera_bottom_screw_frame:
+          Value: false
+        tracebot_camera_link:
           Value: true
         tracebot_left_arm_base:
           Value: false
@@ -120,6 +127,10 @@ Visualization Manager:
       Tree:
         tracebot_base_link:
           tracebot_arm_mount_base:
+            camera_mount:
+              tracebot_camera_bottom_screw_frame:
+                tracebot_camera_link:
+                  {}
             tracebot_left_arm_mount:
               tracebot_left_arm_base_link:
                 tracebot_left_arm_base:
@@ -160,6 +171,10 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        camera_mount:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         tracebot_arm_mount_base:
           Alpha: 1
           Show Axes: false
@@ -169,6 +184,15 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        tracebot_camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         tracebot_left_arm_base:
           Alpha: 1
           Show Axes: false
@@ -345,9 +369,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5353988409042358
+      Pitch: 0.410398930311203
       Target Frame: <Fixed Frame>
-      Yaw: 0.5372345447540283
+      Yaw: 1.0372344255447388
     Saved: ~
 Window Geometry:
   Camera:

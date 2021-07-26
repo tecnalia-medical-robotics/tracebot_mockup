@@ -75,6 +75,7 @@ The pose of the camera in the world is defined within the launchfile [camera_dis
 |`tf_pub_rate`|`Rate at which robot_state_publisher should publish transforms.`|
 |`paused`|`Starts Gazebo in paused mode`|
 |`gui`|`Starts Gazebo gui`|
+|`rviz`|`Launch rviz with gazebo (false by defalut)`|
 
 As shown above, the gazebo launch file has some additional parameters that can be set. However any of the previously stated parameters can also be used.
 
@@ -92,6 +93,11 @@ To run this, and test that the gazebo simulation is working, run:
 rosrun tracebot_mockup_gazebo gazebo_model_test.py
 ```
 You should see that all the motors trigger and the arms curl up.
+
+Rviz can also be set to launch with the gazebo simulation using:
+```bash
+roslaunch tracebot_mockup_description view_tracebot_mockup.launch rviz:=true
+```
 
 ## Setup
 

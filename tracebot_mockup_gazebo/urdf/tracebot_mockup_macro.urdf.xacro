@@ -11,9 +11,11 @@
                                                      arm_mount_offset_theta:=0
                                                      arm_base_tilt:=0
                                                      left_arm_model
-                                                     right_arm_model">
+                                                     right_arm_model
+                                                     camera_mount_offset_z">
     
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
+    <!--xacro:include filename="$(find tracebot_macro_gazebo)/urdf/_d435.gazebo.xacro"/-->
     
     <!--Pass arguments to tracebot_mockup-->
     <xacro:tracebot_mockup
@@ -28,6 +30,7 @@
       arm_base_tilt="$(arg arm_base_tilt)"
       left_arm_model="$(arg left_arm_model)"
       right_arm_model="$(arg right_arm_model)"
+      camera_mount_offset_z="${camera_mount_offset_z}"
     />
 
     <!-- Configure self collision properties per link -->
@@ -81,5 +84,15 @@
     <gazebo reference="${robot_name}_right_arm_ee_link">
       <selfCollide>true</selfCollide>
     </gazebo>
+    
+    <!-- Gazebo Plugins -->
+    <!--xacro:gazebo_d435 
+      camera_name="${camera_name}" 
+      reference_link="${camera_name}_link" 
+      topics_ns="${topics_ns}" 
+      depth_optical_frame="${camera_name}_depth_optical_frame" 
+      color_optical_frame="${camera_name}_color_optical_frame" 
+      infrared1_optical_frame="${camera_name}_left_ir_optical_frame" 
+      infrared2_optical_frame="${camera_name}_right_ir_optical_frame"/-->
   </xacro:macro>
 </robot>

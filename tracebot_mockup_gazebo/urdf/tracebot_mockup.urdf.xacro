@@ -20,6 +20,8 @@
   <xacro:arg name="left_arm_model" default="ur5e"/>
   <xacro:arg name="right_arm_model" default="ur5e"/>
   
+  <xacro:arg name="camera_mount_offset_z" default="0.65169"/>
+  
   <!--Robot arm parameters-->
   <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
 
@@ -36,7 +38,7 @@
     arm_base_tilt="$(arg arm_base_tilt)"
     left_arm_model="$(arg left_arm_model)"
     right_arm_model="$(arg right_arm_model)"
-  />
+    camera_mount_offset_z="$(arg camera_mount_offset_z)"/>
 
   <!--Link base to world-->
   <link name="world"/>
