@@ -18,6 +18,8 @@
     pump_offset_theta="$(arg pump_offset_theta)"
     pump_length="$(arg pump_length)"
     pump_width="$(arg pump_width)"
-    pump_height="$(arg pump_height)"/>
+    pump_height="$(arg pump_height)"
+    left_arm="$(arg left_arm)"
+    right_arm="$(arg right_arm)"/>
 
 </robot>

@@ -1,5 +1,5 @@
+<?xml version="1.0"?>
 <launch>
-
   <arg name="table_length" default="2.0"/>
   <arg name="table_width" default="2.0"/>
   <arg name="table_height" default="1.0"/>
@@ -16,6 +16,8 @@
   <arg name="pump_length" default="0.2"/>
   <arg name="pump_width" default="0.3"/>
   <arg name="pump_height" default="0.4"/>
+  <arg name="left_arm" default="ur5e"/>
+  <arg name="right_arm" default="ur5e"/>
 
   <param name="robot_description" command="$(find xacro)/xacro $(find tracebot_mockup_description)/urdf/tracebot_mockup.urdf.xacro
     table_length:=$(arg table_length)
@@ -34,6 +36,8 @@
     pump_length:=$(arg pump_length)
     pump_width:=$(arg pump_width)
     pump_height:=$(arg pump_height)
+    left_arm:=$(arg left_arm)
+    right_arm:=$(arg right_arm)
     "/>
 
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
