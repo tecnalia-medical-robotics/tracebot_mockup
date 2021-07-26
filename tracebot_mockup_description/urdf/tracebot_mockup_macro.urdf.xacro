@@ -99,10 +99,10 @@
     <link name="${robot_name}_camera_mount"/>
     
     <xacro:sensor_d435 parent="${robot_name}_camera_mount" 
-      use_nominal_extrinsics="false" 
+      use_nominal_extrinsics="true" 
       add_plug="false" 
       use_mesh="true"
-      name="${robot_name}_camera">
+      name="camera">
       <origin xyz="0 0 0" rpy="0 0.785398 1.5708"/>
     </xacro:sensor_d435>
   </xacro:macro>

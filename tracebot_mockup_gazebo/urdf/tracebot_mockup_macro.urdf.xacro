@@ -15,7 +15,6 @@
                                                      camera_mount_offset_z">
     
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-    <!--xacro:include filename="$(find tracebot_macro_gazebo)/urdf/_d435.gazebo.xacro"/-->
     
     <!--Pass arguments to tracebot_mockup-->
     <xacro:tracebot_mockup

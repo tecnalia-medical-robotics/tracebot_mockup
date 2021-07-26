@@ -56,13 +56,14 @@
     </plugin>
   </gazebo>
   
-  <!--xacro:gazebo_d435 
-    camera_name="${robot_name}_camera" 
-    reference_link="${robot_name}_camera_link" 
-    topics_ns="${topics_ns}" 
-    depth_optical_frame="${robot_name}_camera_depth_optical_frame" 
-    color_optical_frame="${robot_name}_camera_color_optical_frame" 
-    infrared1_optical_frame="${robot_name}_camera_left_ir_optical_frame" 
-    infrared2_optical_frame="${robot_name}_camera_right_ir_optical_frame"/-->
+  <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/_d435.gazebo.xacro"/>
+  <xacro:gazebo_d435 
+    camera_name="camera" 
+    reference_link="camera_link" 
+    topics_ns="camera" 
+    depth_optical_frame="camera_depth_optical_frame" 
+    color_optical_frame="camera_color_optical_frame" 
+    infrared1_optical_frame="camera_left_ir_optical_frame" 
+    infrared2_optical_frame="camera_right_ir_optical_frame"/>
   
 </robot>
