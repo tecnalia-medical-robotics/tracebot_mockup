@@ -36,8 +36,8 @@ The table below lists the available parameters and their meaning.
 | `pump_height` | Height of the block representing the pump. |
 | `pump_length` | Length of the block representing the pump. |
 | `pump_width` | Width of the block representing the pump. |
-| `left_arm` | Robot arm name used for left arm. (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
-| `right_arm` | Robot arm name used for right arm. (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
+| `left_arm` | Model used for left Robot Arm. Must use on of: (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
+| `right_arm` | Model used for right Robot Arm. Must use on of:  (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
 
 All parameters use SI units.
 
@@ -81,7 +81,7 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
 - Pull the packages into the repository:
   ```bash
   cd ~/path/to/tracebot_mockup_ws/src
-  git clone https://github.com/BenRJG/tracebot_mockup.git # <=Branch Original => git clone https://github.com/tecnalia-medical-robotics/tracebot_mockup.git
+  git clone https://gitlab.com/tracebot/tracebot_mockup.git
   ```
 - Certain dependencies are not released as binary packages to either Melodic or Noetic, pull those into the workspace as well:
   ```bash
