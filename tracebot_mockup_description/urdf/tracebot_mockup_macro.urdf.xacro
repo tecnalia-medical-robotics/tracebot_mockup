@@ -65,7 +65,9 @@
     
     <xacro:sensor_d435 parent="camera_mount" 
       use_nominal_extrinsics="false" 
-      add_plug="false" use_mesh="true">
+      add_plug="false" 
+      use_mesh="true"
+      name="tracebot_camera">
       <origin xyz="0 0 0" rpy="0 0.785398 1.5708"/>
     </xacro:sensor_d435>
   </xacro:macro>

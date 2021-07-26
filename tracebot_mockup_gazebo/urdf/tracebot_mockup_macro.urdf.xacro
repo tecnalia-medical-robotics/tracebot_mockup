@@ -15,6 +15,7 @@
     camera_mount_offset_z">
     
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
+    <!--xacro:include filename="$(find tracebot_macro_gazebo)/urdf/_d435.gazebo.xacro"/-->
     
     <!--Pass arguments to tracebot_mockup-->
     <xacro:tracebot_mockup
@@ -35,5 +36,15 @@
     <gazebo reference="robot_mount_base">
       <selfCollide>true</selfCollide>
     </gazebo>
-  </xacro:macro>
+    
+    <!-- Gazebo Plugins -->
+    <!--xacro:gazebo_d435 
+      camera_name="${camera_name}" 
+      reference_link="${camera_name}_link" 
+      topics_ns="${topics_ns}" 
+      depth_optical_frame="${camera_name}_depth_optical_frame" 
+      color_optical_frame="${camera_name}_color_optical_frame" 
+      infrared1_optical_frame="${camera_name}_left_ir_optical_frame" 
+      infrared2_optical_frame="${camera_name}_right_ir_optical_frame"/>
+  </xacro:macro-->
 </robot>
