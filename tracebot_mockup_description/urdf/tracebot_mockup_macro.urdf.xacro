@@ -53,6 +53,8 @@
     <link name="right_robot_mount"/>
     
     <!-- Camera Mount -->
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+    
     <joint name="camera_mount_joint" type="fixed">
       <origin xyz="0 0 ${robot_mount_height+camera_mount_offset_z}" rpy="0 0 0"/>
       <parent link="robot_mount_base"/>
@@ -60,5 +62,11 @@
     </joint>
     
     <link name="camera_mount"/>
+    
+    <xacro:sensor_d435 parent="camera_mount" 
+      use_nominal_extrinsics="false" 
+      add_plug="false" use_mesh="true">
+      <origin xyz="0 0 0" rpy="0 0.785398 1.5708"/>
+    </xacro:sensor_d435>
   </xacro:macro>
 </robot>

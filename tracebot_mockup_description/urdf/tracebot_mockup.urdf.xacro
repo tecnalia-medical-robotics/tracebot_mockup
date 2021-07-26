@@ -52,10 +52,4 @@
     <child link="right_base_link"/>
   </joint>
   
-  <!-- Link camera to base -->
-  <!--joint name="camera_base_link_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="camera_mount"/>
-    <child link="camera_base_link"/>
-  </joint-->
 </robot>
