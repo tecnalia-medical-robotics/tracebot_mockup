@@ -4,8 +4,6 @@
   as a template for the nescesarry things to include. -->
 
   <!--Parameter Declarations-->
-  <arg name="robot_name" default="tracebot"/>
-  
   <arg name="mount_base_width" default="0.55"/>
   <arg name="mount_base_length" default="0.55"/>
   <arg name="mount_base_height" default="1.27"/>
@@ -22,7 +20,6 @@
 
   <!--Add arguments to robot description-->
   <param name="robot_description" command="$(find xacro)/xacro '$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup.urdf.xacro'
-    robot_name:=$(arg robot_name)
     mount_base_width:=$(arg mount_base_width)
     mount_base_length:=$(arg mount_base_length)
     mount_base_height:=$(arg mount_base_height)

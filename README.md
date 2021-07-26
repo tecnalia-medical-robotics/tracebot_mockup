@@ -24,16 +24,16 @@ The table below lists the available parameters and their meaning.
 
 | Parameter name | Description |
 | -------------- | ----------- |
-| `robot_mount_offset_x` | Offset in X direction of the robot arm with respect to the center of the stand. |
-| `robot_mount_offset_y` | Offset in Y direction of the robot arm with respect to the center of the stand. |
-| `robot_mount_offset_z` | Offset in Z direction of the robot arm with respect to the top of the stand. |
-| `robot_mount_offset_theta` | Rotational offset around Z of the robot arm with respect to the center of the stand. |
-| `robot_mount_height` | Height of the robot stand. |
-| `robot_mount_length` | Length of the robot stand. |
-| `robot_mount_width` | Width of the robot stand. |
-| `robot_base_tilt` | Angular upward tilt of the robot bases. |
-| `left_arm` | Robot arm name used for left arm. (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
-| `right_arm` | Robot arm name used for right arm. (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
+| `arm_mount_offset_x` | Offset in X direction of the robot arm with respect to the center of the stand. |
+| `arm_mount_offset_y` | Offset in Y direction of the robot arm with respect to the center of the stand. |
+| `arm_mount_offset_z` | Offset in Z direction of the robot arm with respect to the top of the stand. |
+| `arm_mount_offset_theta` | Rotational offset around Z of the robot arm with respect to the center of the stand. |
+| `mount_base_height` | Height of the robot stand. |
+| `mount_base_length` | Length of the robot stand. |
+| `mount_base_width` | Width of the robot stand. |
+| `arm_base_tilt` | Angular upward tilt of the robot bases. |
+| `left_arm_model` | Model used for left Robot Arm. Must use on of: (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
+| `right_arm_model` | Model used for right Robot Arm. Must use on of:  (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e)|
 
 All parameters use SI units.
 
@@ -113,7 +113,7 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
 - Pull the packages into the repository:
   ```bash
   cd ~/path/to/tracebot_mockup_ws/src
-  git clone https://github.com/tecnalia-medical-robotics/tracebot_mockup.git
+  git clone https://gitlab.com/tracebot/tracebot_mockup.git
   ```
 - Certain dependencies are not released as binary packages to either Melodic or Noetic, pull those into the workspace as well:
   ```bash
