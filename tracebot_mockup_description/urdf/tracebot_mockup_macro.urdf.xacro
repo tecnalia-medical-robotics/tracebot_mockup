@@ -90,19 +90,19 @@
     <!-- Camera Mount -->
     <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
     
-    <joint name="camera_mount_joint" type="fixed">
+    <joint name="${robot_name}_camera_mount_joint" type="fixed">
       <origin xyz="0 0 ${mount_base_height+camera_mount_offset_z}" rpy="0 0 0"/>
       <parent link="${robot_name}_arm_mount_base"/>
-      <child link="camera_mount"/>
+      <child link="${robot_name}_camera_mount"/>
     </joint>
     
-    <link name="camera_mount"/>
+    <link name="${robot_name}_camera_mount"/>
     
-    <xacro:sensor_d435 parent="camera_mount" 
+    <xacro:sensor_d435 parent="${robot_name}_camera_mount" 
       use_nominal_extrinsics="false" 
       add_plug="false" 
       use_mesh="true"
-      name="tracebot_camera">
+      name="${robot_name}_camera">
       <origin xyz="0 0 0" rpy="0 0.785398 1.5708"/>
     </xacro:sensor_d435>
   </xacro:macro>

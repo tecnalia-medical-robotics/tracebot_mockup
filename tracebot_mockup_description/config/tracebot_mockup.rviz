@@ -60,8 +60,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        camera_mount:
-          Value: false
         tracebot_arm_mount_base:
           Value: false
         tracebot_base_link:
@@ -70,6 +68,8 @@ Visualization Manager:
           Value: false
         tracebot_camera_link:
           Value: true
+        tracebot_camera_mount:
+          Value: false
         tracebot_left_arm_base:
           Value: false
         tracebot_left_arm_base_link:
@@ -127,7 +127,7 @@ Visualization Manager:
       Tree:
         tracebot_base_link:
           tracebot_arm_mount_base:
-            camera_mount:
+            tracebot_camera_mount:
               tracebot_camera_bottom_screw_frame:
                 tracebot_camera_link:
                   {}
@@ -171,10 +171,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        camera_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         tracebot_arm_mount_base:
           Alpha: 1
           Show Axes: false
@@ -193,6 +189,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        tracebot_camera_mount:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         tracebot_left_arm_base:
           Alpha: 1
           Show Axes: false

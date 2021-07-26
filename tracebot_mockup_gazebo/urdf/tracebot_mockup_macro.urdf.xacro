@@ -84,15 +84,5 @@
     <gazebo reference="${robot_name}_right_arm_ee_link">
       <selfCollide>true</selfCollide>
     </gazebo>
-    
-    <!-- Gazebo Plugins -->
-    <!--xacro:gazebo_d435 
-      camera_name="${camera_name}" 
-      reference_link="${camera_name}_link" 
-      topics_ns="${topics_ns}" 
-      depth_optical_frame="${camera_name}_depth_optical_frame" 
-      color_optical_frame="${camera_name}_color_optical_frame" 
-      infrared1_optical_frame="${camera_name}_left_ir_optical_frame" 
-      infrared2_optical_frame="${camera_name}_right_ir_optical_frame"/-->
   </xacro:macro>
 </robot>
