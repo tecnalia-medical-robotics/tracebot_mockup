@@ -11,7 +11,8 @@
     robot_mount_width
     robot_base_tilt
     left_arm
-    right_arm">
+    right_arm
+    camera_mount_offset_z">
     
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
     
@@ -27,6 +28,7 @@
       robot_base_tilt="${robot_base_tilt}"
       left_arm="${left_arm}"
       right_arm="${right_arm}"
+      camera_mount_offset_z="${camera_mount_offset_z}"
     />
 
     <!--Add collision to base-->
