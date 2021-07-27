@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version='1.7'>
-  <model name='Table'>
-    <link name='link_0'>
+  <model name='Shelf'>
+    <link name='link_2'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -14,7 +14,7 @@
         </inertia>
         <pose>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose>0 0 0 0 -0 0</pose>
+      <pose>0 -0 0 0 0 -0.73812</pose>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
@@ -23,7 +23,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/table.stl</uri>
+            <uri>/home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/shelf.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -36,7 +36,7 @@
           <shader type='pixel'>
             <normal_map>__default__</normal_map>
           </shader>
-          <ambient>0.396 0.263 0.129 1</ambient>
+          <ambient>0.71 0.396 0.114 0</ambient>
           <diffuse>0.7 0.7 0.7 1</diffuse>
           <specular>0.01 0.01 0.01 1</specular>
           <emissive>0 0 0 1</emissive>
@@ -50,7 +50,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/table.stl</uri>
+            <uri>/home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/shelf.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -101,7 +101,7 @@
         </surface>
       </collision>
     </link>
-    <static>1</static>
+    <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
   </model>
 </sdf>
