@@ -25,7 +25,7 @@
       <visual>
         <origin xyz="0 0 ${robot_mount_height/2}" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/stand.stl" />
+          <mesh filename="package://tracebot_mockup_description/meshes/stand.stl" />
         </geometry>
         <material name="grey">
           <color rgba="0.6 0.6 0.6 1.0"/>
