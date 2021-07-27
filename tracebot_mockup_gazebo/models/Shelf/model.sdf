@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version='1.7'>
   <model name='Shelf'>
-    <link name='link_2'>
+    <link name='Shelf'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -23,7 +23,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/shelf.stl</uri>
+            <uri>model://Shelf/meshes/shelf.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -50,7 +50,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/shelf.stl</uri>
+            <uri>model://Shelf/meshes/shelf.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
