@@ -12,7 +12,8 @@
                                               arm_base_tilt:=0
                                               left_arm_model
                                               right_arm_model
-                                              camera_mount_offset_z">
+                                              camera_mount_offset_z
+                                              camera_tilt">
     <!-- Base -->
     <link name="${robot_name}_base_link"/>
     
@@ -102,8 +103,8 @@
       use_nominal_extrinsics="true" 
       add_plug="false" 
       use_mesh="true"
-      name="camera">
-      <origin xyz="0 0 0" rpy="0 0.785398 1.5708"/>
+      name="${robot_name}_camera">
+      <origin xyz="0 0 0" rpy="0 ${camera_tilt} 1.5708"/>
     </xacro:sensor_d435>
   </xacro:macro>
 </robot>

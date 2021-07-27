@@ -66,6 +66,22 @@ Visualization Manager:
           Value: true
         tracebot_camera_bottom_screw_frame:
           Value: false
+        tracebot_camera_color_frame:
+          Value: false
+        tracebot_camera_color_optical_frame:
+          Value: false
+        tracebot_camera_depth_frame:
+          Value: false
+        tracebot_camera_depth_optical_frame:
+          Value: false
+        tracebot_camera_infra1_frame:
+          Value: false
+        tracebot_camera_infra1_optical_frame:
+          Value: false
+        tracebot_camera_infra2_frame:
+          Value: false
+        tracebot_camera_infra2_optical_frame:
+          Value: false
         tracebot_camera_link:
           Value: true
         tracebot_camera_mount:
@@ -130,7 +146,18 @@ Visualization Manager:
             tracebot_camera_mount:
               tracebot_camera_bottom_screw_frame:
                 tracebot_camera_link:
-                  {}
+                  tracebot_camera_color_frame:
+                    tracebot_camera_color_optical_frame:
+                      {}
+                  tracebot_camera_depth_frame:
+                    tracebot_camera_depth_optical_frame:
+                      {}
+                  tracebot_camera_infra1_frame:
+                    tracebot_camera_infra1_optical_frame:
+                      {}
+                  tracebot_camera_infra2_frame:
+                    tracebot_camera_infra2_optical_frame:
+                      {}
             tracebot_left_arm_mount:
               tracebot_left_arm_base_link:
                 tracebot_left_arm_base:
@@ -181,6 +208,38 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
         tracebot_camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_infra1_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_infra1_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_infra2_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tracebot_camera_infra2_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -353,7 +412,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.468780517578125
+      Distance: 3.4254446029663086
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -369,9 +428,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.410398930311203
+      Pitch: 0.5853990912437439
       Target Frame: <Fixed Frame>
-      Yaw: 1.0372344255447388
+      Yaw: 1.0722342729568481
     Saved: ~
 Window Geometry:
   Camera:

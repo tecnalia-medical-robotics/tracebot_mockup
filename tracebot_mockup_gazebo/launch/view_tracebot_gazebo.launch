@@ -18,6 +18,9 @@
   <arg name="left_arm_model" default="ur5e"/>
   <arg name="right_arm_model" default="ur5e"/>
   
+  <arg name="camera_mount_offset_z" default="0.65169"/>
+  <arg name="camera_tilt" default="0.785398"/>
+  
   <arg name="rviz" default="false"/>
 
   <!--Add arguments to robot description-->
@@ -31,7 +34,9 @@
     arm_mount_offset_theta:=$(arg arm_mount_offset_theta)
     arm_base_tilt:=$(arg arm_base_tilt)
     left_arm_model:=$(arg left_arm_model)
-    right_arm_model:=$(arg right_arm_model)"
+    right_arm_model:=$(arg right_arm_model)
+    camera_mount_offset_z:=$(arg camera_mount_offset_z)
+    camera_tilt:=$(arg camera_tilt)"
   />
 
   <!-- Controller configuration -->
