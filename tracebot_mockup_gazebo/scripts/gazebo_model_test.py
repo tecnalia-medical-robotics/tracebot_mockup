@@ -2,11 +2,6 @@
 # licence removed for brevity
 
 import rospy
-from std_msgs.msg import String
-from std_msgs.msg import Float64MultiArray
-from std_msgs.msg import Time
-from std_msgs.msg import Header
-from std_msgs.msg import Duration
 
 from trajectory_msgs.msg import JointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
