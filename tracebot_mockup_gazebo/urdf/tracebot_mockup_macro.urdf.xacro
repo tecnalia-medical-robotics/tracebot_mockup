@@ -14,9 +14,9 @@
                                                      right_arm_model
                                                      camera_mount_offset_z
                                                      camera_tilt">
-    
+
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-    
+
     <!--Pass arguments to tracebot_mockup-->
     <xacro:tracebot_mockup
       robot_name="$(arg robot_name)"
@@ -39,7 +39,7 @@
     <gazebo reference="${robot_name}_mount_base">
       <selfCollide>true</selfCollide>
     </gazebo>
-    
+
     <!-- Left Arm Collision -->
     <gazebo reference="${robot_name}_left_arm_shoulder_link">
       <selfCollide>true</selfCollide>
@@ -62,7 +62,7 @@
     <gazebo reference="${robot_name}_left_arm_ee_link">
       <selfCollide>true</selfCollide>
     </gazebo>
-    
+
     <!-- Right Arm Collision -->
     <gazebo reference="${robot_name}_right_arm_shoulder_link">
       <selfCollide>true</selfCollide>

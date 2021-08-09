@@ -24,7 +24,7 @@ The table below lists the available parameters and their meaning.
 
 | Parameter name | Description |
 | -------------- | ----------- |
-|`robot_name`| Set the prefix name of the robot, 'tracebot' by default |
+| `robot_name` | Set the prefix name of the robot, 'tracebot' by default. |
 | `mount_base_width` | Width of the robot stand. |
 | `mount_base_length` | Length of the robot stand. |
 | `mount_base_height` | Height of the robot stand. |
@@ -35,29 +35,34 @@ The table below lists the available parameters and their meaning.
 | `arm_base_tilt` | Angular upward tilt of the robot bases. |
 | `left_arm_model` | Model used for left Robot Arm. Must use on of: (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e) |
 | `right_arm_model` | Model used for right Robot Arm. Must use on of:  (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e) |
-|`camera_mount_offset_z`| Offset in Z direction of the camera with respect to the top of the stand. |
-|`camera_tilt`| The forward tilt of the camera. |
+| `camera_mount_offset_z` | Offset in Z direction of the camera with respect to the top of the stand. |
+| `camera_tilt` | The forward tilt of the camera. |
 
 All parameters use SI units.
 
 ## Usage
+
 ### Launch Rviz
+
 This repository offers visualisation of the mockup model within rviz using the `view_tracebot_mockup.launch` file, inside `tracebot_mockup_description`.
 
-The rviz simulation give a basic visualisation of the robot with any of the robot arms (the default being ur5e). The launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
+The rviz simulation give a basic visualisation of the robot with any of the robot arms (the default being ur5e).
+The launchfile exposes the parameters listed in [Model Parameters](#model-parameters) as arguments, providing reasonable defaults.
 
 Firsly ensuring that the workspace is sourced:
+
 ```bash
 source ~/path/to/tracebot_mockup_ws/devel/setup.bash
 ```
+
 - The mockup can be run with default parameters:
-```bash
-roslaunch tracebot_mockup_description view_tracebot_mockup.launch
-```
+  ```bash
+  roslaunch tracebot_mockup_description view_tracebot_mockup.launch
+  ```
 - Or using any of the available parameters, such as exchanging the left arm for the ur10e model:
-```bash
-roslaunch tracebot_mockup_description view_tracebot_mockup.launch left_arm:="ur10e"
-```
+  ```bash
+  roslaunch tracebot_mockup_description view_tracebot_mockup.launch left_arm:="ur10e"
+  ```
 
 A camera view can be added to rviz:
 
@@ -69,32 +74,39 @@ The intrinsic camera parameters are defined using the standard ROS format, and s
 The pose of the camera in the world is defined within the launchfile [camera_display.launch](tracebot_mockup_description/launch/camera_display.launch)
 
 ### Launch Gazebo
+
 | Parameter name | Description |
 | -------------- | ----------- |
-|`rviz`|`Launch rviz with gazebo (false by defalut)`|
-|`controller_config_file`|`Config file used for defining the ROS-Control controllers.`|
-|`controllers`|`Controllers that are activated by default.`|
-|`stopped_controllers`|`Controllers that are initally loaded, but not started.`|
-|`tf_prefix`|`tf_prefix used for the robot.`|
-|`tf_pub_rate`|`Rate at which robot_state_publisher should publish transforms.`|
-|`paused`|`Starts Gazebo in paused mode`|
-|`gui`|`Starts Gazebo gui`|
+| `rviz` | `Launch rviz with gazebo (false by defalut).` |
+| `controller_config_file` | `Config file used for defining the ROS-Control controllers.` |
+| `controllers` | `Controllers that are activated by default.` |
+| `stopped_controllers` | `Controllers that are initally loaded, but not started.` |
+| `tf_prefix` | `tf_prefix used for the robot.` |
+| `tf_pub_rate` | `Rate at which robot_state_publisher should publish transforms.` |
+| `paused` | `Starts Gazebo in paused mode.` |
+| `gui` | `Starts Gazebo gui.` |
 
-As shown above, the gazebo launch file has some additional parameters that can be set. However any of the previously stated parameters can also be used.
+As shown above, the gazebo launch file has some additional parameters that can be set.
+However any of the previously stated parameters can also be used.
 
 - This can be launched with the default using:
-```bash
-roslaunch tracebot_mockup_gazebo view_tracebot_gazebo.launch
-```
+  ```bash
+  roslaunch tracebot_mockup_gazebo view_tracebot_gazebo.launch
+  ```
 - Or using any of the available parameters, such as starting the simulation paused:
-```bash
-roslaunch tracebot_mockup_gazebo view_tracebot_gazebo.launch paused:=true
-```
-The arms can then be communicated with by publishing to the `/pos_joint_traj_controller/command` topic which uses [JointTrajectory messages](http://docs.ros.org/en/noetic/api/trajectory_msgs/html/msg/JointTrajectory.html). An example of this can be found in the [scripts/gazebo_model_test.py](tracebot_mockup_gazebo/scripts/gazebo_model_test.py) file.
+  ```bash
+  roslaunch tracebot_mockup_gazebo view_tracebot_gazebo.launch paused:=true
+  ```
+
+The arms can then be communicated with by publishing to the `/pos_joint_traj_controller/command` topic which uses [JointTrajectory messages](http://docs.ros.org/en/noetic/api/trajectory_msgs/html/msg/JointTrajectory.html).
+An example of this can be found in the [scripts/gazebo_model_test.py](tracebot_mockup_gazebo/scripts/gazebo_model_test.py) file.
+
 To run this, and test that the gazebo simulation is working, run:
+
 ```bash
 rosrun tracebot_mockup_gazebo gazebo_model_test.py
 ```
+
 You should see that all the motors trigger and the arms curl up.
 
 Rviz can also be set to launch with the gazebo simulation using:

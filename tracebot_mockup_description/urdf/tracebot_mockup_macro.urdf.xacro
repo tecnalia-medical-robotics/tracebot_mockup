@@ -16,7 +16,7 @@
                                               camera_tilt">
     <!-- Base -->
     <link name="${robot_name}_base_link"/>
-    
+
     <joint name="${robot_name}_mount_base_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <parent link="${robot_name}_base_link"/>
@@ -34,7 +34,7 @@
         </material>
       </visual>
     </link>
-    
+
     <!-- Arm Setup -->
     <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
     <!-- Left Arm Mount -->
@@ -43,15 +43,15 @@
       <parent link="${robot_name}_arm_mount_base"/>
       <child link="${robot_name}_left_arm_mount"/>
     </joint>
-    
+
     <link name="${robot_name}_left_arm_mount"/>
-    
+
     <joint name="${robot_name}_left_arm_base_link_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       <parent link="${robot_name}_left_arm_mount"/>
       <child link="${robot_name}_left_arm_base_link"/>
     </joint>
-  
+
     <xacro:ur_robot prefix="${robot_name}_left_arm_"
       joint_limits_parameters_file="$(find ur_description)/config/$(arg left_arm_model)/joint_limits.yaml"
       kinematics_parameters_file="$(find ur_description)/config/$(arg left_arm_model)/default_kinematics.yaml"
@@ -61,23 +61,23 @@
       safety_limits="false"
       safety_pos_margin="0.15"
       safety_k_position="20"/>
-    
-    
+
+
     <!-- Right Arm Mount -->
     <joint name="${robot_name}_right_arm_mount_joint" type="fixed">
       <origin xyz="${arm_mount_offset_x} 0 ${mount_base_height-arm_mount_offset_z}" rpy="0 ${pi/2-arm_base_tilt} 0"/>
       <parent link="${robot_name}_arm_mount_base"/>
       <child link="${robot_name}_right_arm_mount"/>
     </joint>
-    
+
     <link name="${robot_name}_right_arm_mount"/>
-    
+
     <joint name="${robot_name}_right_arm_base_link_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
       <parent link="${robot_name}_right_arm_mount"/>
       <child link="${robot_name}_right_arm_base_link"/>
     </joint>
-  
+
     <xacro:ur_robot prefix="${robot_name}_right_arm_"
       joint_limits_parameters_file="$(find ur_description)/config/$(arg right_arm_model)/joint_limits.yaml"
       kinematics_parameters_file="$(find ur_description)/config/$(arg right_arm_model)/default_kinematics.yaml"
