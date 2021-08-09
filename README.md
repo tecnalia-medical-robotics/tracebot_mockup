@@ -24,7 +24,7 @@ The table below lists the available parameters and their meaning.
 
 | Parameter name | Description |
 | -------------- | ----------- |
-|`robot_name`| Set the prefix name of the robot, 'tracebot' by default |
+| `robot_name` | Set the prefix name of the robot, 'tracebot' by default. |
 | `mount_base_width` | Width of the robot stand. |
 | `mount_base_length` | Length of the robot stand. |
 | `mount_base_height` | Height of the robot stand. |
@@ -77,14 +77,14 @@ The pose of the camera in the world is defined within the launchfile [camera_dis
 
 | Parameter name | Description |
 | -------------- | ----------- |
-| `rviz` | `Launch rviz with gazebo (false by defalut)` |
+| `rviz` | `Launch rviz with gazebo (false by defalut).` |
 | `controller_config_file` | `Config file used for defining the ROS-Control controllers.` |
 | `controllers` | `Controllers that are activated by default.` |
 | `stopped_controllers` | `Controllers that are initally loaded, but not started.` |
 | `tf_prefix` | `tf_prefix used for the robot.` |
 | `tf_pub_rate` | `Rate at which robot_state_publisher should publish transforms.` |
-| `paused` | `Starts Gazebo in paused mode` |
-| `gui` | `Starts Gazebo gui` |
+| `paused` | `Starts Gazebo in paused mode.` |
+| `gui` | `Starts Gazebo gui.` |
 
 As shown above, the gazebo launch file has some additional parameters that can be set.
 However any of the previously stated parameters can also be used.
