@@ -1,54 +1,89 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:macro name="tracebot_mockup" params="robot_mount_offset_x
-                                              robot_mount_offset_y
-                                              robot_mount_offset_z
-                                              robot_mount_offset_theta
-                                              robot_mount_height
-                                              robot_mount_length
-                                              robot_mount_width
-                                              robot_base_tilt
-                                              left_arm
-                                              right_arm">
+  <xacro:macro name="tracebot_mockup" params="robot_name
+                                              mount_base_width
+                                              mount_base_length
+                                              mount_base_height
+                                              arm_mount_offset_x:=0
+                                              arm_mount_offset_y:=0
+                                              arm_mount_offset_z:=0
+                                              arm_mount_offset_theta:=0
+                                              arm_base_tilt:=0
+                                              left_arm_model
+                                              right_arm_model">
     <!-- Base -->
-    <link name="base_link"/>
-    
-    <joint name="robot_mount_base_joint" type="fixed">
+    <link name="${robot_name}_base_link"/>
+
+    <joint name="${robot_name}_mount_base_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="base_link"/>
-      <child link="robot_mount_base"/>
+      <parent link="${robot_name}_base_link"/>
+      <child link="${robot_name}_arm_mount_base"/>
     </joint>
 
-    <link name="robot_mount_base">
+    <link name="${robot_name}_arm_mount_base">
       <visual>
-        <origin xyz="0 0 ${robot_mount_height/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 ${mount_base_height/2}" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="file:///home/benrjg/astech_wss/tracebot_mockup_ws/src/tracebot_mockup/tracebot_mockup_description/meshes/stand.stl" />
+          <mesh filename="package://tracebot_mockup_description/meshes/stand.stl" />
         </geometry>
         <material name="grey">
           <color rgba="0.6 0.6 0.6 1.0"/>
         </material>
       </visual>
     </link>
-    
-    
+
+    <!-- Arm Setup -->
+    <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
     <!-- Left Arm Mount -->
-    <joint name="left_robot_mount_joint" type="fixed">
-      <origin xyz="${-robot_mount_offset_x} 0 ${robot_mount_height-robot_mount_offset_z}" rpy="0 ${-pi/2+robot_base_tilt} 0"/>
-      <parent link="robot_mount_base"/>
-      <child link="left_robot_mount"/>
+    <joint name="${robot_name}_left_arm_mount_joint" type="fixed">
+      <origin xyz="${-arm_mount_offset_x} 0 ${mount_base_height-arm_mount_offset_z}" rpy="0 ${-pi/2+arm_base_tilt} 0"/>
+      <parent link="${robot_name}_arm_mount_base"/>
+      <child link="${robot_name}_left_arm_mount"/>
     </joint>
-    
-    <link name="left_robot_mount"/>
-    
+
+    <link name="${robot_name}_left_arm_mount"/>
+
+    <joint name="${robot_name}_left_arm_base_link_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
+      <parent link="${robot_name}_left_arm_mount"/>
+      <child link="${robot_name}_left_arm_base_link"/>
+    </joint>
+
+    <xacro:ur_robot prefix="${robot_name}_left_arm_"
+      joint_limits_parameters_file="$(find ur_description)/config/$(arg left_arm_model)/joint_limits.yaml"
+      kinematics_parameters_file="$(find ur_description)/config/$(arg left_arm_model)/default_kinematics.yaml"
+      physical_parameters_file="$(find ur_description)/config/$(arg left_arm_model)/physical_parameters.yaml"
+      visual_parameters_file="$(find ur_description)/config/$(arg left_arm_model)/visual_parameters.yaml"
+      transmission_hw_interface="hardware_interface/PositionJointInterface"
+      safety_limits="false"
+      safety_pos_margin="0.15"
+      safety_k_position="20"/>
+
+
     <!-- Right Arm Mount -->
-    <joint name="right_robot_mount_joint" type="fixed">
-      <origin xyz="${robot_mount_offset_x} 0 ${robot_mount_height-robot_mount_offset_z}" rpy="0 ${pi/2-robot_base_tilt} 0"/>
-      <parent link="robot_mount_base"/>
-      <child link="right_robot_mount"/>
+    <joint name="${robot_name}_right_arm_mount_joint" type="fixed">
+      <origin xyz="${arm_mount_offset_x} 0 ${mount_base_height-arm_mount_offset_z}" rpy="0 ${pi/2-arm_base_tilt} 0"/>
+      <parent link="${robot_name}_arm_mount_base"/>
+      <child link="${robot_name}_right_arm_mount"/>
     </joint>
-    
-    <link name="right_robot_mount"/>
+
+    <link name="${robot_name}_right_arm_mount"/>
+
+    <joint name="${robot_name}_right_arm_base_link_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+      <parent link="${robot_name}_right_arm_mount"/>
+      <child link="${robot_name}_right_arm_base_link"/>
+    </joint>
+
+    <xacro:ur_robot prefix="${robot_name}_right_arm_"
+      joint_limits_parameters_file="$(find ur_description)/config/$(arg right_arm_model)/joint_limits.yaml"
+      kinematics_parameters_file="$(find ur_description)/config/$(arg right_arm_model)/default_kinematics.yaml"
+      physical_parameters_file="$(find ur_description)/config/$(arg right_arm_model)/physical_parameters.yaml"
+      visual_parameters_file="$(find ur_description)/config/$(arg right_arm_model)/visual_parameters.yaml"
+      transmission_hw_interface="hardware_interface/PositionJointInterface"
+      safety_limits="false"
+      safety_pos_margin="0.15"
+      safety_k_position="20"/>
   </xacro:macro>
 </robot>

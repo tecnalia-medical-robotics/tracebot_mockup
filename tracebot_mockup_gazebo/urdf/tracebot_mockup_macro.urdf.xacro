@@ -1,36 +1,84 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:macro name="tracebot_mockup_gazebo" params="
-    robot_mount_offset_x
-    robot_mount_offset_y
-    robot_mount_offset_z
-    robot_mount_offset_theta
-    robot_mount_height
-    robot_mount_length
-    robot_mount_width
-    robot_base_tilt
-    left_arm
-    right_arm">
-    
+  <xacro:macro name="tracebot_mockup_gazebo" params="robot_name
+                                                     mount_base_width
+                                                     mount_base_length
+                                                     mount_base_height
+                                                     arm_mount_offset_x:=0
+                                                     arm_mount_offset_y:=0
+                                                     arm_mount_offset_z:=0
+                                                     arm_mount_offset_theta:=0
+                                                     arm_base_tilt:=0
+                                                     left_arm_model
+                                                     right_arm_model">
+
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-    
+
     <!--Pass arguments to tracebot_mockup-->
     <xacro:tracebot_mockup
-      robot_mount_offset_x="${robot_mount_offset_x}"
-      robot_mount_offset_y="${robot_mount_offset_y}"
-      robot_mount_offset_z="${robot_mount_offset_z}"
-      robot_mount_offset_theta="${robot_mount_offset_theta}"
-      robot_mount_height="${robot_mount_height}"
-      robot_mount_length="${robot_mount_length}"
-      robot_mount_width="${robot_mount_width}"
-      robot_base_tilt="${robot_base_tilt}"
-      left_arm="${left_arm}"
-      right_arm="${right_arm}"
+      robot_name="$(arg robot_name)"
+      mount_base_width="$(arg mount_base_width)"
+      mount_base_length="$(arg mount_base_length)"
+      mount_base_height="$(arg mount_base_height)"
+      arm_mount_offset_x="$(arg arm_mount_offset_x)"
+      arm_mount_offset_y="$(arg arm_mount_offset_y)"
+      arm_mount_offset_z="$(arg arm_mount_offset_z)"
+      arm_mount_offset_theta="$(arg arm_mount_offset_theta)"
+      arm_base_tilt="$(arg arm_base_tilt)"
+      left_arm_model="$(arg left_arm_model)"
+      right_arm_model="$(arg right_arm_model)"
     />
 
-    <!--Add collision to base-->
-    <gazebo reference="robot_mount_base">
+    <!-- Configure self collision properties per link -->
+    <!-- Base Collision -->
+    <gazebo reference="${robot_name}_mount_base">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!-- Left Arm Collision -->
+    <gazebo reference="${robot_name}_left_arm_shoulder_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_left_arm_upper_arm_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_left_arm_forearm_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_left_arm_wrist_1_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_left_arm_wrist_3_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_left_arm_wrist_2_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_left_arm_ee_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!-- Right Arm Collision -->
+    <gazebo reference="${robot_name}_right_arm_shoulder_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_right_arm_upper_arm_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_right_arm_forearm_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_right_arm_wrist_1_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_right_arm_wrist_3_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_right_arm_wrist_2_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${robot_name}_right_arm_ee_link">
       <selfCollide>true</selfCollide>
     </gazebo>
   </xacro:macro>

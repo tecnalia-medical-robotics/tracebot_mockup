@@ -1,53 +1,20 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="tracebot_mockup">
-   
+
   <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
 
   <!--Add parameters to robot base-->
   <xacro:tracebot_mockup
-    robot_mount_offset_x="$(arg robot_mount_offset_x)"
-    robot_mount_offset_y="$(arg robot_mount_offset_y)"
-    robot_mount_offset_z="$(arg robot_mount_offset_z)"
-    robot_mount_offset_theta="$(arg robot_mount_offset_theta)"
-    robot_mount_length="$(arg robot_mount_length)"
-    robot_mount_width="$(arg robot_mount_width)"
-    robot_mount_height="$(arg robot_mount_height)"
-    robot_base_tilt="$(arg robot_base_tilt)"
-    left_arm="$(arg left_arm)"
-    right_arm="$(arg right_arm)"/>
-   
-  <!--Add parameters to robot arms-->
-  <xacro:ur_robot prefix="left_"
-    joint_limits_parameters_file="$(find ur_description)/config/$(arg left_arm)/joint_limits.yaml"
-    kinematics_parameters_file="$(find ur_description)/config/$(arg left_arm)/default_kinematics.yaml"
-    physical_parameters_file="$(find ur_description)/config/$(arg left_arm)/physical_parameters.yaml"
-    visual_parameters_file="$(find ur_description)/config/$(arg left_arm)/visual_parameters.yaml"
-    transmission_hw_interface="hardware_interface/VelocityJointInterface"
-    safety_limits="false"
-    safety_pos_margin="0.15"
-    safety_k_position="20"/>
-    
-  <xacro:ur_robot prefix="right_"
-    joint_limits_parameters_file="$(find ur_description)/config/$(arg right_arm)/joint_limits.yaml"
-    kinematics_parameters_file="$(find ur_description)/config/$(arg right_arm)/default_kinematics.yaml"
-    physical_parameters_file="$(find ur_description)/config/$(arg right_arm)/physical_parameters.yaml"
-    visual_parameters_file="$(find ur_description)/config/$(arg right_arm)/visual_parameters.yaml"
-    transmission_hw_interface="hardware_interface/VelocityJointInterface"
-    safety_limits="false"
-    safety_pos_margin="0.15"
-    safety_k_position="20"/>
-  
-  <!-- Link arms to base -->
-  <joint name="left_base_link_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 1.5708"/>
-    <parent link="left_robot_mount"/>
-    <child link="left_base_link"/>
-  </joint>
-
-  <joint name="right_base_link_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
-    <parent link="right_robot_mount"/>
-    <child link="right_base_link"/>
-  </joint>
+    robot_name="$(arg robot_name)"
+    mount_base_width="$(arg mount_base_width)"
+    mount_base_length="$(arg mount_base_length)"
+    mount_base_height="$(arg mount_base_height)"
+    arm_mount_offset_x="$(arg arm_mount_offset_x)"
+    arm_mount_offset_y="$(arg arm_mount_offset_y)"
+    arm_mount_offset_z="$(arg arm_mount_offset_z)"
+    arm_mount_offset_theta="$(arg arm_mount_offset_theta)"
+    arm_base_tilt="$(arg arm_base_tilt)"
+    left_arm_model="$(arg left_arm_model)"
+    right_arm_model="$(arg right_arm_model)"
+  />
 </robot>
