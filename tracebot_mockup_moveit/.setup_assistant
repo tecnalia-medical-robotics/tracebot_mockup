@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: Ben Gordon
     author_email: ben.gordon@astechprojects.co.uk
-    generated_timestamp: 1627913667
+    generated_timestamp: 1627915124
