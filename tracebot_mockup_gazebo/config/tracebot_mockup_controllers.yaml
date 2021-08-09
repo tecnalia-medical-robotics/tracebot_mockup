@@ -11,7 +11,7 @@ pos_joint_traj_controller:
     - tracebot_left_arm_wrist_1_joint
     - tracebot_left_arm_wrist_2_joint
     - tracebot_left_arm_wrist_3_joint
-    
+
     - tracebot_right_arm_shoulder_pan_joint
     - tracebot_right_arm_shoulder_lift_joint
     - tracebot_right_arm_elbow_joint
@@ -27,7 +27,7 @@ pos_joint_traj_controller:
     tracebot_left_arm_wrist_1_joint: {trajectory: 0.1, goal: 0.1}
     tracebot_left_arm_wrist_2_joint: {trajectory: 0.1, goal: 0.1}
     tracebot_left_arm_wrist_3_joint: {trajectory: 0.1, goal: 0.1}
-    
+
     tracebot_right_arm_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
     tracebot_right_arm_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
     tracebot_right_arm_elbow_joint: {trajectory: 0.1, goal: 0.1}
