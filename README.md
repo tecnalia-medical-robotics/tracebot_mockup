@@ -24,16 +24,19 @@ The table below lists the available parameters and their meaning.
 
 | Parameter name | Description |
 | -------------- | ----------- |
+| `robot_name` | Set the prefix name of the robot, 'tracebot' by default. |
+| `mount_base_width` | Width of the robot stand. |
+| `mount_base_length` | Length of the robot stand. |
+| `mount_base_height` | Height of the robot stand. |
 | `arm_mount_offset_x` | Offset in X direction of the robot arm with respect to the center of the stand. |
 | `arm_mount_offset_y` | Offset in Y direction of the robot arm with respect to the center of the stand. |
 | `arm_mount_offset_z` | Offset in Z direction of the robot arm with respect to the top of the stand. |
 | `arm_mount_offset_theta` | Rotational offset around Z of the robot arm with respect to the center of the stand. |
-| `mount_base_height` | Height of the robot stand. |
-| `mount_base_length` | Length of the robot stand. |
-| `mount_base_width` | Width of the robot stand. |
 | `arm_base_tilt` | Angular upward tilt of the robot bases. |
 | `left_arm_model` | Model used for left Robot Arm. Must use on of: (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e) |
-| `right_arm_model` | Model used for right Robot Arm. Must use on of: (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e) |
+| `right_arm_model` | Model used for right Robot Arm. Must use on of:  (ur3, ur3e, ur5, ur5e, ur10, ur10e, ur16e) |
+| `camera_mount_offset_z` | Offset in Z direction of the camera with respect to the top of the stand. |
+| `camera_tilt` | The forward tilt of the camera. |
 
 All parameters use SI units.
 
@@ -74,13 +77,14 @@ The pose of the camera in the world is defined within the launchfile [camera_dis
 
 | Parameter name | Description |
 | -------------- | ----------- |
+| `rviz` | `Launch rviz with gazebo (false by defalut).` |
 | `controller_config_file` | `Config file used for defining the ROS-Control controllers.` |
 | `controllers` | `Controllers that are activated by default.` |
 | `stopped_controllers` | `Controllers that are initally loaded, but not started.` |
 | `tf_prefix` | `tf_prefix used for the robot.` |
 | `tf_pub_rate` | `Rate at which robot_state_publisher should publish transforms.` |
-| `paused` | `Starts Gazebo in paused mode` |
-| `gui` | `Starts Gazebo gui` |
+| `paused` | `Starts Gazebo in paused mode.` |
+| `gui` | `Starts Gazebo gui.` |
 
 As shown above, the gazebo launch file has some additional parameters that can be set.
 However any of the previously stated parameters can also be used.
@@ -96,6 +100,7 @@ However any of the previously stated parameters can also be used.
 
 The arms can then be communicated with by publishing to the `/pos_joint_traj_controller/command` topic which uses [JointTrajectory messages](http://docs.ros.org/en/noetic/api/trajectory_msgs/html/msg/JointTrajectory.html).
 An example of this can be found in the [scripts/gazebo_model_test.py](tracebot_mockup_gazebo/scripts/gazebo_model_test.py) file.
+
 To run this, and test that the gazebo simulation is working, run:
 
 ```bash
@@ -103,6 +108,15 @@ rosrun tracebot_mockup_gazebo gazebo_model_test.py
 ```
 
 You should see that all the motors trigger and the arms curl up.
+
+Rviz can also be set to launch with the gazebo simulation using:
+```bash
+roslaunch tracebot_mockup_gazebo view_tracebot_gazebo.launch rviz:=true
+```
+If you wish to launch rviz seperately (e.g. if launching from a seperate device) there is also a launch file in the gazebo package for this:
+```bash
+roslaunch tracebot_mockup_gazebo view_tracebot_rviz.launch
+```
 
 ## Setup
 
@@ -126,6 +140,7 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
   cd ~/path/to/tracebot_mockup_ws/src
   git clone https://gitlab.com/tracebot/tracebot_mockup.git
   ```
+  #### Install Universal Arm package
 - Certain dependencies are not released as binary packages to either Melodic or Noetic, pull those into the workspace as well:
   ```bash
   cd ~/path/to/tracebot_mockup_ws/src
@@ -136,7 +151,18 @@ The examples listed below use [catkin_tools](https://catkin-tools.readthedocs.io
   cd ~/path/to/tracebot_mockup_ws
   rosdep install -iy --from-paths src --rosdistro "$ROS_DISTRO"
   ```
-- Build:
+  #### Install Realsense Camera packge
+- The realsense description package needs to be installed for the 3d model and urdf files using:
+  ```bash
+  sudo apt-get install ros-$ROS_DISTRO-realsense2-description
+  ```
+  more information about this package can be found ont the [realsense-ros github page](https://github.com/IntelRealSense/realsense-ros)
+  
+- Then the realsense gazebo plugin needs to be installed, allowing the topics to be published (more information can be found on their [github page](https://github.com/pal-robotics/realsense_gazebo_plugin)):
+  ```bash
+  git clone https://github.com/pal-robotics/realsense_gazebo_plugin
+  ```
+- Then finally Build everything:
   ```bash
   cd ~/path/to/tracebot_mockup_ws
   catkin build

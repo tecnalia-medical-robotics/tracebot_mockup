@@ -11,7 +11,9 @@
                                               arm_mount_offset_theta:=0
                                               arm_base_tilt:=0
                                               left_arm_model
-                                              right_arm_model">
+                                              right_arm_model
+                                              camera_mount_offset_z
+                                              camera_tilt">
     <!-- Base -->
     <link name="${robot_name}_base_link"/>
 
@@ -85,5 +87,24 @@
       safety_limits="false"
       safety_pos_margin="0.15"
       safety_k_position="20"/>
+    
+    <!-- Camera Mount -->
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+    
+    <joint name="${robot_name}_camera_mount_joint" type="fixed">
+      <origin xyz="0 0 ${mount_base_height+camera_mount_offset_z}" rpy="0 0 0"/>
+      <parent link="${robot_name}_arm_mount_base"/>
+      <child link="${robot_name}_camera_mount"/>
+    </joint>
+    
+    <link name="${robot_name}_camera_mount"/>
+    
+    <xacro:sensor_d435 parent="${robot_name}_camera_mount" 
+      use_nominal_extrinsics="true" 
+      add_plug="false" 
+      use_mesh="true"
+      name="${robot_name}_camera">
+      <origin xyz="0 0 0" rpy="0 ${camera_tilt} 1.5708"/>
+    </xacro:sensor_d435>
   </xacro:macro>
 </robot>

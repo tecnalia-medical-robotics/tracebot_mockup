@@ -12,11 +12,15 @@
   <arg name="arm_mount_offset_y" default="0.0"/>
   <arg name="arm_mount_offset_z" default="0.0707"/>
   <arg name="arm_mount_offset_theta" default="0.0"/>
-
   <arg name="arm_base_tilt" default="0.785398"/>
 
   <arg name="left_arm_model" default="ur5e"/>
   <arg name="right_arm_model" default="ur5e"/>
+
+  <arg name="camera_mount_offset_z" default="0.65169"/>
+  <arg name="camera_tilt" default="0.785398"/>
+
+  <arg name="rviz" default="false"/>
 
   <!--Add arguments to robot description-->
   <param name="robot_description" command="$(find xacro)/xacro '$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup.urdf.xacro'
@@ -29,7 +33,9 @@
     arm_mount_offset_theta:=$(arg arm_mount_offset_theta)
     arm_base_tilt:=$(arg arm_base_tilt)
     left_arm_model:=$(arg left_arm_model)
-    right_arm_model:=$(arg right_arm_model)"
+    right_arm_model:=$(arg right_arm_model)
+    camera_mount_offset_z:=$(arg camera_mount_offset_z)
+    camera_tilt:=$(arg camera_tilt)"
   />
 
   <!-- Controller configuration -->
@@ -59,5 +65,8 @@
     <arg name="gui" value="$(arg gui)"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
+    <arg name="gazebo_world" value="$(find tracebot_mockup_gazebo)/worlds/tracebot_mockup_world.world"/>
   </include>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tracebot_mockup_gazebo)/config/tracebot_mockup.rviz" if="$(arg rviz)"/>
 </launch>

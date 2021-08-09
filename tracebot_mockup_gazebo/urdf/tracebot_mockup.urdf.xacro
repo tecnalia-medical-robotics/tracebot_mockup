@@ -20,6 +20,9 @@
   <xacro:arg name="left_arm_model" default="ur5e"/>
   <xacro:arg name="right_arm_model" default="ur5e"/>
 
+  <xacro:arg name="camera_mount_offset_z" default="0.65169"/>
+  <xacro:arg name="camera_tilt" default="0.785398"/>
+
   <!--Robot arm parameters-->
   <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
 
@@ -36,7 +39,8 @@
     arm_base_tilt="$(arg arm_base_tilt)"
     left_arm_model="$(arg left_arm_model)"
     right_arm_model="$(arg right_arm_model)"
-  />
+    camera_mount_offset_z="$(arg camera_mount_offset_z)"
+    camera_tilt="$(arg camera_tilt)"/>
 
   <!--Link base to world-->
   <link name="world"/>
@@ -54,4 +58,13 @@
     </plugin>
   </gazebo>
 
+  <xacro:include filename="$(find tracebot_mockup_gazebo)/urdf/_d435.gazebo.xacro"/>
+  <xacro:gazebo_d435 
+    camera_name="$(arg robot_name)_camera" 
+    reference_link="$(arg robot_name)_camera_link" 
+    topics_ns="$(arg robot_name)_camera" 
+    depth_optical_frame="$(arg robot_name)_camera_depth_optical_frame" 
+    color_optical_frame="$(arg robot_name)_camera_color_optical_frame" 
+    infrared1_optical_frame="$(arg robot_name)_camera_left_ir_optical_frame" 
+    infrared2_optical_frame="$(arg robot_name)_camera_right_ir_optical_frame"/>
 </robot>

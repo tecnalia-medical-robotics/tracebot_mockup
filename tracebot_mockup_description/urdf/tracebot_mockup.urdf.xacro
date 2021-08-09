@@ -16,5 +16,6 @@
     arm_base_tilt="$(arg arm_base_tilt)"
     left_arm_model="$(arg left_arm_model)"
     right_arm_model="$(arg right_arm_model)"
-  />
+    camera_mount_offset_z="$(arg camera_mount_offset_z)"
+    camera_tilt="$(arg camera_tilt)"/>
 </robot>

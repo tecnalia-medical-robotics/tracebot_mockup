@@ -11,7 +11,9 @@
                                                      arm_mount_offset_theta:=0
                                                      arm_base_tilt:=0
                                                      left_arm_model
-                                                     right_arm_model">
+                                                     right_arm_model
+                                                     camera_mount_offset_z
+                                                     camera_tilt">
 
     <xacro:include filename="$(find tracebot_mockup_description)/urdf/tracebot_mockup_macro.urdf.xacro"/>
 
@@ -28,6 +30,8 @@
       arm_base_tilt="$(arg arm_base_tilt)"
       left_arm_model="$(arg left_arm_model)"
       right_arm_model="$(arg right_arm_model)"
+      camera_mount_offset_z="${camera_mount_offset_z}"
+      camera_tilt="${camera_tilt}"
     />
 
     <!-- Configure self collision properties per link -->
