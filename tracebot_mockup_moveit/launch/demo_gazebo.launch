@@ -26,15 +26,13 @@
   <arg name="gazebo_gui" default="true"/>
   <arg name="paused" default="false"/>
   <!-- By default, use the urdf location provided from the package -->
-  <arg name="urdf_path" default="$(find tracebot_mockup_description)/urdf/tracebot_mockup.urdf.xacro"/>
+  <arg name="urdf_path" default="$(find tracebot_mockup_gazebo)/urdf/tracebot_mockup.urdf.xacro"/>
 
   <!-- launch the gazebo simulator and spawn the robot -->
-  <!--include file="$(find tracebot_mockup_moveit)/launch/gazebo.launch" >
+  <include file="$(find tracebot_mockup_moveit)/launch/gazebo.launch" >
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
     <arg name="urdf_path" value="$(arg urdf_path)"/>
-  </include-->
-  <include file="$(find tracebot_mockup_gazebo)/launch/view_tracebot_gazebo.launch">
   </include>
 
   <!-- If needed, broadcast static tf for robot root -->
@@ -51,7 +49,7 @@
   </node>
 
   <!-- Given the published joint states, publish tf for the robot links -->
-  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" /-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
   <include file="$(find tracebot_mockup_moveit)/launch/move_group.launch">
