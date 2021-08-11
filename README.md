@@ -12,6 +12,7 @@ The objective is to analyse different placements of the robots and equipment in 
 - [Usage](#usage)
   - [Launch Rviz](#launch-rviz)
   - [Launch Gazebo](#launch-gazebo)
+  - [Launch MoveIt](#launch-moveit)
 - [Setup](#setup)
   - [Installing locally](#installing-locally)
   - [Using docker images](#using-docker-images)
@@ -117,6 +118,12 @@ If you wish to launch rviz seperately (e.g. if launching from a seperate device)
 ```bash
 roslaunch tracebot_mockup_gazebo view_tracebot_rviz.launch
 ```
+### Launch MoveIt
+After launching the gazebo sim (without rviz), the moveit arm planning can be launched using
+```bash
+roslaunch tracebot_mockup_moveit_config view_tracebot_moveit.launch
+```
+This launches rviz with visualisation for moveing the robot in gazebo.
 
 ## Setup
 
