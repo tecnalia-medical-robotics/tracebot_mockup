@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
-project(tracebot_mockup_moveit)
+project(tracebot_mockup_moveit_config)
 
 find_package(catkin REQUIRED)
 
