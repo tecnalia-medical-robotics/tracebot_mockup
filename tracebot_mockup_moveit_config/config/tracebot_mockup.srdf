@@ -39,7 +39,7 @@
     <group_state name="left_home" group="left_arm">
         <joint name="tracebot_left_arm_elbow_joint" value="1.5708"/>
         <joint name="tracebot_left_arm_shoulder_lift_joint" value="-0.7853"/>
-        <joint name="tracebot_left_arm_shoulder_pan_joint" value="6.2831"/>
+        <joint name="tracebot_left_arm_shoulder_pan_joint" value="0"/>
         <joint name="tracebot_left_arm_wrist_1_joint" value="0"/>
         <joint name="tracebot_left_arm_wrist_2_joint" value="0"/>
         <joint name="tracebot_left_arm_wrist_3_joint" value="0"/>
