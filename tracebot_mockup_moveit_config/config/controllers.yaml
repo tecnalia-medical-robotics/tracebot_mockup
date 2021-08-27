@@ -1,0 +1,24 @@
+controller_list:
+  - name: left_pos_joint_traj_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - tracebot_left_arm_shoulder_pan_joint
+      - tracebot_left_arm_shoulder_lift_joint
+      - tracebot_left_arm_elbow_joint
+      - tracebot_left_arm_wrist_1_joint
+      - tracebot_left_arm_wrist_2_joint
+      - tracebot_left_arm_wrist_3_joint
+      
+  - name: right_pos_joint_traj_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - tracebot_right_arm_shoulder_pan_joint
+      - tracebot_right_arm_shoulder_lift_joint
+      - tracebot_right_arm_elbow_joint
+      - tracebot_right_arm_wrist_1_joint
+      - tracebot_right_arm_wrist_2_joint
+      - tracebot_right_arm_wrist_3_joint

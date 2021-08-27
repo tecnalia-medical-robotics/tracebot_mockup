@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Robot state publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
+    <rosparam param="source_list">[/joint_states]</rosparam>
+  </node>
+
+  <rosparam file="$(find tracebot_mockup_moveit_config)/config/controllers.yaml" command="load"/>
+  
+    <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find tracebot_mockup_moveit_config)/launch/move_group.launch">
+    <arg name="info" value="true"/>
+    <arg name="load_robot_description" value="false"/>
+  </include>
+  
+    <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find tracebot_mockup_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find tracebot_mockup_moveit_config)/launch/moveit.rviz"/>
+  </include>
+</launch>

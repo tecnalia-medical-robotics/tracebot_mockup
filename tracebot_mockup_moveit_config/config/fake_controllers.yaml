@@ -1,0 +1,32 @@
+controller_list:
+  - name: fake_left_arm_controller
+    type: $(arg execution_type)
+    joints:
+      - tracebot_left_arm_shoulder_pan_joint
+      - tracebot_left_arm_shoulder_lift_joint
+      - tracebot_left_arm_elbow_joint
+      - tracebot_left_arm_wrist_1_joint
+      - tracebot_left_arm_wrist_2_joint
+      - tracebot_left_arm_wrist_3_joint
+  - name: fake_right_arm_controller
+    type: $(arg execution_type)
+    joints:
+      - tracebot_right_arm_shoulder_pan_joint
+      - tracebot_right_arm_shoulder_lift_joint
+      - tracebot_right_arm_elbow_joint
+      - tracebot_right_arm_wrist_1_joint
+      - tracebot_right_arm_wrist_2_joint
+      - tracebot_right_arm_wrist_3_joint
+  - name: fake_left_hand_controller
+    type: $(arg execution_type)
+    joints:
+      []
+  - name: fake_right_hand_controller
+    type: $(arg execution_type)
+    joints:
+      []
+initial:  # Define initial robot poses.
+  - group: left_arm
+    pose: left_home
+  - group: right_arm
+    pose: right_home

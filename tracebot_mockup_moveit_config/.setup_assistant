@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: tracebot_mockup_description
+    relative_path: urdf/tracebot_mockup.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/tracebot_mockup.srdf
+  CONFIG:
+    author_name: Ben Gordon
+    author_email: ben.gordon@astechprojects.co.uk
+    generated_timestamp: 1628590312
